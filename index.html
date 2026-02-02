@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- ZMIENNE I BAZA --- */
+        /* --- ZMIENNE I BAZA (SPÓJNE DLA WSZYSTKICH STRON) --- */
         :root {
             --primary: #6366f1; 
             --secondary: #3b82f6;
@@ -55,14 +55,19 @@
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); font-size: 0.95rem; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
-        .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); transition: background 0.3s; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--dark); }
 
         /* Hero */
         .hero { padding: 120px 0; min-height: 85vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%); }
         .hero-content { max-width: 650px; }
         .hero h1 { font-size: 4rem; margin-bottom: 25px; font-weight: 900; letter-spacing: -2px; }
-        .hero-typing { color: var(--primary); }
+        
+        /* Styl kursora maszyny do pisania */
+        .hero-typing { color: var(--primary); position: relative; }
+        .hero-typing::after { content: '|'; position: absolute; right: -15px; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
         .hero p { font-size: 1.25rem; margin-bottom: 40px; color: var(--text-gray); max-width: 90%; }
 
         /* Stats */
@@ -130,6 +135,7 @@
                     <li><a href="demo.html">Demo</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#kontakt">Kontakt</a></li>
+                    <!-- Przycisk Dark Mode -->
                     <div class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></div>
                 </ul>
                 <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -249,19 +255,37 @@
     <a href="#kontakt" class="fab-contact"><i class="fa-solid fa-phone"></i></a>
 
     <script>
-        // DARK MODE
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
+        // --- ZAAWANSOWANY DARK MODE (SYNC + PERSISTENCE) ---
+        function applyTheme(theme) {
             const icon = document.querySelector('.theme-toggle i');
-            if(document.body.classList.contains('dark-mode')) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
                 icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
             } else {
+                document.body.classList.remove('dark-mode');
                 icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
             }
         }
-        if(localStorage.getItem('theme')==='dark') toggleTheme();
+
+        function toggleTheme() {
+            const current = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', current);
+            applyTheme(current);
+        }
+
+        // 1. Sprawdź zapisany motyw przy starcie
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        }
+
+        // 2. Nasłuchuj zmian w innych kartach (synchronizacja)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                applyTheme(e.newValue);
+            }
+        });
+
 
         // SCROLL PROGRESS
         window.onscroll = function() {
