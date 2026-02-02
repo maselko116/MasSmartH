@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- PEŁNE STYLE Z WCZEŚNIEJSZEJ WERSJI --- */
+        /* --- STYLE ZGODNE Z INDEX.HTML --- */
         :root {
             --primary: #6366f1; 
             --secondary: #3b82f6;
@@ -79,14 +79,16 @@
         nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo { font-size: 1.6rem; font-weight: 800; color: var(--dark); display: flex; align-items: center; gap: 10px; }
         .logo span { background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); }
+        .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
+        
+        .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); transition: background 0.3s; }
         .menu-toggle { display: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; }
 
-        /* --- KARTY OFERTY (STYL POPRZEDNI) --- */
-        .offer { padding: 60px 0 100px; }
+        /* --- KARTY OFERTY --- */
+        .offer { padding: 60px 0 60px; /* Zmniejszony padding dolny, bo configurator ma margin */ }
         .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
         .offer-card {
@@ -123,8 +125,17 @@
         .offer-card li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
         .offer-card li i { color: var(--secondary); background: rgba(59, 130, 246, 0.1); padding: 5px; border-radius: 50%; font-size: 0.7rem; }
 
-        /* --- KONFIGURATOR (STYL POPRZEDNI) --- */
-        .configurator { padding: 100px 0; background: var(--bg-offset); transition: background 0.5s ease; border-radius: var(--radius); margin-bottom: 80px; }
+        /* --- KONFIGURATOR (ODDZIELONA SEKCJA) --- */
+        .configurator { 
+            margin-top: 120px; /* DUŻY ODSTĘP OD GÓRY */
+            padding: 100px 0; 
+            background: var(--bg-offset); 
+            transition: background 0.5s ease; 
+            border-radius: var(--radius); 
+            margin-bottom: 80px; 
+            border: 1px solid var(--border-color); /* Delikatna ramka dla odcięcia */
+        }
+        
         .config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-bottom: 50px; }
 
         .config-item {
@@ -171,9 +182,10 @@
             <nav>
                 <a href="index.html" class="logo"><i class="fa-solid fa-house-signal" style="color: var(--primary);"></i>Mas<span>SmartH</span></a>
                 <ul class="nav-links">
-                    <li><a href="index.html">Start</a></li>
+                    <li><a href="index.html">Strona główna</a></li>
                     <li><a href="oferta.html" class="active">Oferta</a></li>
                     <li><a href="demo.html">Demo</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
                     <li><a href="index.html#kontakt">Kontakt</a></li>
                     <div class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></div>
                 </ul>
@@ -222,49 +234,66 @@
                 </ul>
             </div>
         </div>
-
-        <section class="configurator reveal">
-            <div class="container">
-                <div class="section-title" style="margin-top: 0;">
-                    <p>Kreator wyceny</p>
-                    <h2>Co chcesz zautomatyzować?</h2>
-                    <p style="text-transform: none; font-weight: 400; color: var(--text-gray); margin-top: 10px;">Zaznacz elementy, które Cię interesują.</p>
-                </div>
-                
-                <div class="config-grid">
-                    <div class="config-item" onclick="toggleOption(this, 'Światło')"><i class="fa-solid fa-lightbulb"></i><h4>Oświetlenie</h4></div>
-                    <div class="config-item" onclick="toggleOption(this, 'Ogrzewanie')"><i class="fa-solid fa-temperature-three-quarters"></i><h4>Ogrzewanie</h4></div>
-                    <div class="config-item" onclick="toggleOption(this, 'Rolety')"><i class="fa-solid fa-border-all"></i><h4>Rolety</h4></div>
-                    <div class="config-item" onclick="toggleOption(this, 'Bramy')"><i class="fa-solid fa-dungeon"></i><h4>Bramy</h4></div>
-                    <div class="config-item" onclick="toggleOption(this, 'Kamera')"><i class="fa-solid fa-video"></i><h4>Kamery</h4></div>
-                    <div class="config-item" onclick="toggleOption(this, 'Alarm')"><i class="fa-solid fa-shield-halved"></i><h4>Alarm</h4></div>
-                    <div class="config-item" onclick="toggleOption(this, 'Audio')"><i class="fa-solid fa-music"></i><h4>Multiroom Audio</h4></div>
-                    <div class="config-item" onclick="toggleOption(this, 'Ogród')"><i class="fa-solid fa-tree"></i><h4>Nawadnianie</h4></div>
-                </div>
-
-                <div class="config-summary" id="summary-box" style="display:none;">
-                    <h3 style="margin-bottom: 15px;">Twój zestaw:</h3>
-                    <p id="selected-items" style="color: var(--primary); font-weight: 700; margin: 15px 0; font-size: 1.2rem;"></p>
-                    <button class="btn" onclick="sendConfig()">Poproś o wycenę <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></button>
-                </div>
-            </div>
-        </section>
     </div>
 
+    <section class="configurator reveal">
+        <div class="container">
+            <div class="section-title" style="margin-top: 0;">
+                <p>Kreator wyceny</p>
+                <h2>Co chcesz zautomatyzować?</h2>
+                <p style="text-transform: none; font-weight: 400; color: var(--text-gray); margin-top: 10px;">Zaznacz elementy, które Cię interesują.</p>
+            </div>
+            
+            <div class="config-grid">
+                <div class="config-item" onclick="toggleOption(this, 'Światło')"><i class="fa-solid fa-lightbulb"></i><h4>Oświetlenie</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Ogrzewanie')"><i class="fa-solid fa-temperature-three-quarters"></i><h4>Ogrzewanie</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Rolety')"><i class="fa-solid fa-border-all"></i><h4>Rolety</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Bramy')"><i class="fa-solid fa-dungeon"></i><h4>Bramy</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Kamera')"><i class="fa-solid fa-video"></i><h4>Kamery</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Alarm')"><i class="fa-solid fa-shield-halved"></i><h4>Alarm</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Audio')"><i class="fa-solid fa-music"></i><h4>Multiroom Audio</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Ogród')"><i class="fa-solid fa-tree"></i><h4>Nawadnianie</h4></div>
+            </div>
+
+            <div class="config-summary" id="summary-box" style="display:none;">
+                <h3 style="margin-bottom: 15px;">Twój zestaw:</h3>
+                <p id="selected-items" style="color: var(--primary); font-weight: 700; margin: 15px 0; font-size: 1.2rem;"></p>
+                <button class="btn" onclick="sendConfig()">Poproś o wycenę <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></button>
+            </div>
+        </div>
+    </section>
+
     <script>
-        // DARK MODE
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
+        // --- ZAAWANSOWANY DARK MODE (SYNC + PERSISTENCE) ---
+        function applyTheme(theme) {
             const icon = document.querySelector('.theme-toggle i');
-            if(document.body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'dark');
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+                if (icon) icon.classList.replace('fa-moon', 'fa-sun');
             } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'light');
+                document.body.classList.remove('dark-mode');
+                if (icon) icon.classList.replace('fa-sun', 'fa-moon');
             }
         }
-        if(localStorage.getItem('theme')==='dark') toggleTheme();
+
+        function toggleTheme() {
+            const current = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', current);
+            applyTheme(current);
+        }
+
+        // 1. Sprawdź zapisany motyw przy starcie
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        }
+
+        // 2. Nasłuchuj zmian w innych kartach (synchronizacja)
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'theme') {
+                applyTheme(e.newValue);
+            }
+        });
 
         // MENU TOGGLE
         document.querySelector('.menu-toggle').onclick = () => document.querySelector('.nav-links').classList.toggle('active');
