@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STYLE STRONY (ZGODNE Z INDEX.HTML) --- */
+        /* --- STYLE ZGODNE Z INDEX.HTML (FIOLETOWY MOTYW) --- */
         :root {
             --primary: #6366f1; 
             --secondary: #3b82f6;
@@ -19,6 +19,7 @@
             --card-bg: #ffffff;
             --border-color: rgba(0,0,0,0.05);
             --brand-gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            
             --radius: 16px;
             --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -30,16 +31,20 @@
             --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
         }
 
+        /* --- KLUCZOWY RESET (DODANY DLA SPÓJNOŚCI Z INDEX.HTML) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
         body { 
             font-family: 'Inter', sans-serif; 
             background: var(--bg-light); 
             color: var(--text-gray); 
-            margin: 0; 
+            line-height: 1.6;
             overflow-x: hidden; 
-            transition: background 0.5s, color 0.5s; /* Płynne przejście dark mode */
+            transition: background 0.5s, color 0.5s; 
         }
         
-        a { text-decoration: none; color: inherit; } ul { list-style: none; padding: 0; margin: 0; }
+        a { text-decoration: none; color: inherit; } ul { list-style: none; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* HEADER */
@@ -51,7 +56,7 @@
         .logo span { background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
         .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); }
+        .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); font-size: 0.95rem; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
         
         .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); transition: var(--transition); }
@@ -79,7 +84,7 @@
 
         .hero-buttons { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
         
-        /* Styl przycisku zgodny z index.html */
+        /* Styl przycisku zgodny z resztą strony */
         .btn-primary { 
             background: var(--brand-gradient); 
             color: white; 
@@ -92,10 +97,7 @@
             border: none;
             cursor: pointer;
         }
-        .btn-primary:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5); 
-        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5); }
         
         .secondary-link { font-weight: 600; color: var(--dark); border-bottom: 2px solid transparent; transition: 0.3s; }
         .secondary-link:hover { border-color: var(--primary); color: var(--primary); }
@@ -113,7 +115,7 @@
 
         /* Iframe Styles */
         iframe { width: 100%; height: 100%; border: none; background-color: #fff; -webkit-overflow-scrolling: touch; }
-        #HAdemo { border-radius: 35px; } /* Zaokrąglenia tylko dla telefonu */
+        #HAdemoPhone { border-radius: 35px; } 
         
         /* Loader */
         .loading-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-light); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; transition: opacity 0.5s; pointer-events: none; }
@@ -123,35 +125,42 @@
         /* --- PANEL NAŚCIENNY (TABLET) --- */
         .wall-panel-section {
             padding: 100px 0;
-            background: var(--bg-offset); /* Zmienione na zmienną */
+            background: var(--bg-offset);
             border-top: 1px solid var(--border-color);
             text-align: center;
             transition: background 0.5s;
         }
         
-        .wall-panel-container {
-            max-width: 1000px;
-            margin: 40px auto 0;
-        }
+        .wall-panel-container { max-width: 1000px; margin: 40px auto 0; }
 
         .wall-tablet {
             width: 100%;
             aspect-ratio: 16/10; /* Proporcje tabletu */
             background: #111;
             border-radius: 24px;
-            box-shadow: 
-                0 20px 50px rgba(0,0,0,0.3), /* Cień rzucany na ścianę */
-                0 0 0 14px #1c1c1e, /* Ramka */
-                inset 0 0 20px rgba(0,0,0,0.5); /* Cień wewnętrzny ekranu */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 0 14px #1c1c1e, inset 0 0 20px rgba(0,0,0,0.5);
             position: relative;
             overflow: hidden;
         }
+
+        /* --- STOPKA --- */
+        footer { background: #0f172a; color: white; padding: 80px 0 30px; position: relative; }
+        footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand-gradient); }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .footer-column ul li { margin-bottom: 10px; color: #94a3b8; }
+        .footer-column ul li a:hover { color: white; }
 
         @media (max-width: 900px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .hero-buttons { justify-content: center; }
             .demo-frame-wrapper { margin: 0 auto; width: 320px; height: 640px; }
-            .wall-tablet { aspect-ratio: 16/9; } /* Na mobilce trochę węższy */
+            .wall-tablet { aspect-ratio: 16/9; }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: var(--card-bg); flex-direction: column; padding: 30px; border-bottom: 1px solid var(--border-color); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
         }
     </style>
 </head>
@@ -166,6 +175,7 @@
                     <li><a href="index.html">Strona główna</a></li>
                     <li><a href="oferta.html">Oferta</a></li>
                     <li><a href="demo.html" class="active">Demo</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
                     <li><a href="index.html#kontakt">Kontakt</a></li>
                     <div class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></div>
                 </ul>
@@ -188,7 +198,7 @@
                     </p>
                     
                     <div class="hero-buttons">
-                        <a href="konfigurator.html" class="btn-primary">
+                        <a href="oferta.html" class="btn-primary">
                             Rozpocznij wycenę <i class="fa-solid fa-arrow-right" style="margin-left:8px;"></i>
                         </a>
                         <div>
@@ -259,6 +269,34 @@
             </div>
         </div>
     </section>
+
+    <!-- STOPKA -->
+    <footer id="kontakt">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="logo" style="color:white; display:block; margin-bottom: 20px;">Mas<span>SmartH</span></a>
+                    <p>Twój dom w Twoich rękach.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Nawigacja</h4>
+                    <ul>
+                        <li><a href="index.html">Strona główna</a></li>
+                        <li><a href="oferta.html">Oferta</a></li>
+                        <li><a href="demo.html">Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope"></i> kontakt@massmarth.pl</li>
+                        <li><i class="fa-brands fa-linkedin"></i> LinkedIn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">&copy; 2025 MasSmartH.</div>
+        </div>
+    </footer>
 
     <script>
         // DARK MODE
