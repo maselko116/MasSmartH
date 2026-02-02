@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- ZMIENNE KOLORYSTYCZNE --- */
+        /* --- ZMIENNE I BAZA --- */
         :root {
             --primary: #6366f1; 
             --secondary: #3b82f6;
@@ -20,234 +20,98 @@
             --card-bg: #ffffff;
             --border-color: rgba(0,0,0,0.05);
             --brand-gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            
             --radius: 16px;
             --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- DARK MODE --- */
         body.dark-mode {
-            --dark: #f1f5f9;
-            --text-gray: #94a3b8;
-            --bg-light: #0f172a;
-            --bg-offset: #1e293b;
-            --card-bg: #1e293b;
-            --border-color: rgba(255,255,255,0.05);
+            --dark: #f1f5f9; --text-gray: #94a3b8; --bg-light: #0f172a;
+            --bg-offset: #1e293b; --card-bg: #1e293b; --border-color: rgba(255,255,255,0.05);
             --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- BAZA --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-gray);
-            line-height: 1.6;
-            background-color: var(--bg-light);
-            overflow-x: hidden;
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-
+        body { font-family: 'Inter', sans-serif; color: var(--text-gray); line-height: 1.6; background-color: var(--bg-light); transition: background 0.5s, color 0.5s; }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
         h1, h2, h3, h4 { color: var(--dark); line-height: 1.2; transition: color 0.5s ease; }
-
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- PASEK POSTĘPU (SCROLL PROGRESS) --- */
-        .scroll-progress-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 4px;
-            background: transparent; z-index: 2000; pointer-events: none;
-        }
-        .scroll-progress-bar {
-            height: 100%; background: var(--brand-gradient); width: 0%;
-            transition: width 0.1s;
-        }
-
-        /* --- UI ELEMENTY --- */
-        .btn {
-            display: inline-block; padding: 14px 36px;
-            background: var(--brand-gradient); color: white;
-            border-radius: 50px; font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
-            border: none; cursor: pointer; position: relative; overflow: hidden; z-index: 1;
-        }
+        /* UI */
+        .btn { display: inline-block; padding: 14px 36px; background: var(--brand-gradient); color: white; border-radius: 50px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5); }
-
         .section-title { text-align: center; margin-bottom: 4rem; }
-        .section-title h2 { font-size: 2.8rem; margin-bottom: 10px; font-weight: 800; letter-spacing: -1px; }
+        .section-title h2 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; }
         .section-title p { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; }
 
-        /* --- NAWIGACJA --- */
-        header {
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px);
-            position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            transition: background 0.5s ease, border-color 0.5s ease;
-        }
+        /* Header & Nav */
+        header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); transition: background 0.5s; }
         body.dark-mode header { background: rgba(15, 23, 42, 0.8); }
-
         nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo { font-size: 1.6rem; font-weight: 800; color: var(--dark); display: flex; align-items: center; gap: 10px; }
         .logo span { background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); font-size: 0.95rem; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        
-        .theme-toggle {
-            cursor: pointer; font-size: 1.2rem; color: var(--dark);
-            width: 40px; height: 40px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            background: var(--bg-offset); transition: var(--transition);
-        }
-        .theme-toggle:hover { background: var(--border-color); color: var(--primary); transform: rotate(15deg); }
-        .menu-toggle { display: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
+        .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- HERO --- */
-        .hero {
-            padding: 100px 0; display: flex; align-items: center; min-height: 85vh;
-            background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-                        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
-        }
+        /* Hero */
+        .hero { padding: 120px 0; min-height: 85vh; display: flex; align-items: center; background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%); }
         .hero-content { max-width: 650px; }
         .hero h1 { font-size: 4rem; margin-bottom: 25px; font-weight: 900; letter-spacing: -2px; }
-        .hero-typing { color: var(--primary); position: relative; }
-        .hero-typing::after { content: '|'; position: absolute; right: -15px; animation: blink 0.7s infinite; }
+        .hero-typing { color: var(--primary); }
         .hero p { font-size: 1.25rem; margin-bottom: 40px; color: var(--text-gray); max-width: 90%; }
-        @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- STATYSTYKI --- */
-        .stats-section {
-            padding: 60px 0; background: var(--brand-gradient); color: white;
-            margin-top: -50px; border-radius: var(--radius); position: relative; z-index: 10;
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3); margin-bottom: 80px;
-        }
+        /* Stats */
+        .stats-section { padding: 60px 0; background: var(--brand-gradient); color: white; border-radius: var(--radius); margin-top: -60px; position: relative; z-index: 10; box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3); margin-bottom: 80px; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center; gap: 20px; }
         .stat-item h3 { font-size: 3rem; font-weight: 800; margin-bottom: 5px; color: white; }
 
-        /* --- OFERTA (Naprawione, bez migania) --- */
-        .offer { background-color: var(--bg-offset); padding: 100px 0; transition: background 0.5s ease; }
-        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* Sekcje */
+        .about, .portfolio, .faq { padding: 100px 0; transition: background 0.3s; }
+        .about { background: var(--bg-light); }
+        .portfolio { background: var(--bg-offset); }
+        .faq { background: var(--bg-light); }
 
-        .offer-card {
-            background: var(--card-bg); padding: 45px; border-radius: var(--radius);
-            box-shadow: var(--shadow); border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Usunięte background transition */
-            position: relative; overflow: hidden; height: 100%;
-        }
-        .offer-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        
-        .icon-box {
-            width: 70px; height: 70px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
-            border-radius: 20px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 25px; color: var(--primary); font-size: 1.8rem;
-        }
-        .offer-card:hover .icon-box { background: var(--brand-gradient); color: white; }
-        .offer-card li i { color: var(--secondary); background: rgba(59, 130, 246, 0.1); padding: 5px; border-radius: 50%; font-size: 0.7rem; margin-right: 10px; }
-        .offer-card li { margin-bottom: 12px; display: flex; align-items: center; }
-
-        /* --- KONFIGURATOR --- */
-        .configurator { padding: 100px 0; background: var(--bg-light); transition: background 0.5s ease; }
-        .config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .config-item {
-            border: 2px solid var(--border-color); border-radius: var(--radius); padding: 35px 20px;
-            text-align: center; cursor: pointer; transition: var(--transition); background: var(--card-bg);
-        }
-        .config-item:hover { border-color: var(--secondary); transform: translateY(-5px); }
-        .config-item.selected { border-color: var(--primary); background: rgba(99, 102, 241, 0.05); }
-        .config-item i { font-size: 2.5rem; color: #cbd5e1; margin-bottom: 20px; transition: var(--transition); }
-        .config-item.selected i { color: var(--primary); }
-        .config-summary { text-align: center; padding: 40px; background: var(--bg-offset); border-radius: var(--radius); max-width: 800px; margin: 0 auto; border: 1px solid var(--border-color); }
-
-        /* --- DEMO --- */
-        .demo-section { padding: 100px 0; background: var(--bg-offset); transition: background 0.5s ease; }
-        .browser-mockup {
-            background: var(--bg-light); border-radius: var(--radius); box-shadow: var(--shadow);
-            overflow: hidden; max-width: 1000px; margin: 0 auto; border: 1px solid var(--border-color);
-        }
-        .browser-header { background: var(--card-bg); padding: 15px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border-color); }
-        .demo-tabs { display: flex; border-bottom: 1px solid var(--border-color); background: var(--card-bg); }
-        .demo-tab { padding: 18px 30px; cursor: pointer; font-weight: 600; color: var(--text-gray); border-bottom: 3px solid transparent; transition: var(--transition); }
-        .demo-tab.active { border-bottom-color: var(--primary); color: var(--primary); background: rgba(99, 102, 241, 0.04); }
-        .demo-content { padding: 50px; min-height: 450px; display: none; animation: fadeIn 0.5s ease; background: var(--bg-light); }
-        .demo-content.active { display: block; }
-        .demo-layout { display: flex; gap: 40px; align-items: center; }
-        .demo-visual { flex: 1.2; height: 350px; background: var(--bg-offset); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--border-color); }
-
-        /* --- FAQ (NOWA SEKCJA - BAJER) --- */
-        .faq { padding: 100px 0; background: var(--bg-light); transition: background 0.5s ease; }
-        .faq-item {
-            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius);
-            margin-bottom: 15px; overflow: hidden; transition: var(--transition);
-        }
-        .faq-question {
-            padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-            font-weight: 700; color: var(--dark);
-        }
-        .faq-question i { transition: transform 0.3s ease; color: var(--primary); }
-        .faq-answer {
-            max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 25px;
-            color: var(--text-gray);
-        }
-        .faq-item.active .faq-answer { padding-bottom: 25px; }
-        .faq-item.active .faq-question i { transform: rotate(180deg); }
-
-        /* --- REALIZACJE (NAPRAWIONE + KOLORY) --- */
-        .portfolio { background-color: var(--bg-offset); padding: 100px 0; transition: background 0.5s ease; }
-        .portfolio-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; /* Grid zamiast dziwnych pasków */
-        }
-        .portfolio-item {
-            background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
-            box-shadow: var(--shadow); border: 1px solid var(--border-color);
-            transition: var(--transition); display: flex; flex-direction: column; /* Wymuszenie pionu */
-        }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .portfolio-item { background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color); transition: var(--transition); }
         .portfolio-item:hover { transform: translateY(-10px); }
-        
-        /* Obrazki z gradientami - to co lubiłeś */
-        .portfolio-img {
-            height: 220px; width: 100%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 3rem;
-        }
-        .portfolio-info { padding: 30px; flex-grow: 1; }
-        .portfolio-info h4 { margin-bottom: 10px; color: var(--dark); font-size: 1.2rem; }
-        .portfolio-info span { font-size: 0.85rem; color: var(--primary); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .portfolio-img { height: 220px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
+        .portfolio-info { padding: 30px; }
 
-        /* --- STOPKA --- */
-        footer { background: #0f172a; color: white; padding: 80px 0 30px; position: relative; overflow: hidden; }
+        /* FAQ */
+        .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius); margin-bottom: 15px; overflow: hidden; }
+        .faq-question { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 700; color: var(--dark); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 25px; color: var(--text-gray); }
+        .faq-item.active .faq-answer { padding-bottom: 25px; }
+
+        /* Footer */
+        footer { background: #0f172a; color: white; padding: 80px 0 30px; position: relative; }
         footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--brand-gradient); }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 60px; }
-        .footer-column ul li { margin-bottom: 15px; color: #94a3b8; cursor: pointer; }
-        .footer-column ul li:hover { color: white; }
-        
-        .fab-contact {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: var(--brand-gradient); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.5rem; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
-            cursor: pointer; z-index: 1000; animation: pulse 2s infinite;
-        }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .footer-column ul li { margin-bottom: 10px; color: #94a3b8; }
+        .footer-column ul li a:hover { color: white; }
+
+        .fab-contact { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--brand-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4); cursor: pointer; z-index: 1000; }
+
+        /* Pasek Postępu */
+        .scroll-progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 2000; pointer-events: none; }
+        .scroll-progress-bar { height: 100%; background: var(--brand-gradient); width: 0%; transition: width 0.1s; }
+
+        /* Animacje */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
             .nav-links { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: var(--card-bg); flex-direction: column; padding: 30px; border-bottom: 1px solid var(--border-color); }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
-            .about-content, .demo-layout { flex-direction: column; }
+            .hero h1 { font-size: 2.8rem; }
             .stats-section { margin-top: 0; }
         }
-        
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -259,15 +123,13 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#hero" class="logo"><i class="fa-solid fa-house-signal" style="color: var(--primary);"></i>Mas<span>SmartH</span></a>
+                <a href="index.html" class="logo"><i class="fa-solid fa-house-signal" style="color: var(--primary);"></i>Mas<span>SmartH</span></a>
                 <ul class="nav-links">
-                    <li><a href="#hero" class="nav-link">Start</a></li>
-                    <li><a href="#oferta" class="nav-link">Oferta</a></li>
-                    <li><a href="#konfigurator" class="nav-link">Wycena</a></li>
-                    <li><a href="#demo" class="nav-link">Demo</a></li>
-                    <li><a href="#realizacje" class="nav-link">Korzyści</a></li>
-                    <li><a href="#faq" class="nav-link">FAQ</a></li>
-                    <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+                    <li><a href="index.html" class="active">Strona główna</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="demo.html">Demo</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
                     <div class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></div>
                 </ul>
                 <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -275,14 +137,14 @@
         </div>
     </header>
 
-    <section id="hero" class="hero">
+    <section class="hero">
         <div class="container">
             <div class="hero-content reveal">
                 <h1>Twój dom, tylko <br><span class="hero-typing"></span></h1>
-                <p>Profesjonalne systemy Smart Home. Bezpieczeństwo i wygoda bez abonamentów.</p>
+                <p>Profesjonalne systemy Smart Home oparte o Home Assistant. Pełna kontrola, bezpieczeństwo i prywatność. Bez chmur i abonamentów.</p>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="#konfigurator" class="btn">Zbuduj zestaw</a>
-                    <a href="#demo" class="btn" style="background: var(--bg-offset); color: var(--dark); box-shadow: none; border: 1px solid var(--border-color);">Zobacz demo</a>
+                    <a href="oferta.html" class="btn">Sprawdź Ofertę</a>
+                    <a href="demo.html" class="btn" style="background: var(--bg-offset); color: var(--dark);">Zobacz Demo</a>
                 </div>
             </div>
         </div>
@@ -299,150 +161,59 @@
         </div>
     </div>
 
-    <section id="oferta" class="offer">
+    <section class="about">
         <div class="container">
-            <div class="section-title reveal"><p>Możliwości</p><h2>Warianty współpracy</h2></div>
-            <div class="offer-grid">
-                <div class="offer-card reveal">
-                    <div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
-                    <h3>Tylko Konfiguracja</h3>
-                    <p>Konfiguracja Home Assistant na Twoim sprzęcie.</p>
-                    <ul><li><i class="fa-solid fa-check"></i> Integracja</li><li><i class="fa-solid fa-check"></i> Zdalny dostęp</li></ul>
-                </div>
-                <div class="offer-card reveal">
-                    <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
-                    <h3>Własny Sprzęt</h3>
-                    <p>Instalacja na dedykowanym mini-PC u Ciebie.</p>
-                    <ul><li><i class="fa-solid fa-check"></i> Dobór PC</li><li><i class="fa-solid fa-check"></i> Zigbee/Matter</li></ul>
-                </div>
-                <div class="offer-card reveal">
-                    <div class="icon-box"><i class="fa-solid fa-star"></i></div>
-                    <h3>Full Experience</h3>
-                    <p>Wdrożenie pod klucz z montażem.</p>
-                    <ul><li><i class="fa-solid fa-check"></i> Projekt</li><li><i class="fa-solid fa-check"></i> Montaż</li></ul>
-                </div>
+            <div class="section-title reveal"><p>O marce</p><h2>Dlaczego MasSmartH?</h2></div>
+            <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                    Tworzę systemy, które działają dla Ciebie, a nie dla korporacji. Stawiam na rozwiązania <strong>Open Source</strong> (Home Assistant), które gwarantują, że Twoje dane zostają w domu.
+                </p>
+                <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600;">
+                    Brak internetu? Żaden problem. Mój system działa w pełni lokalnie.
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="konfigurator" class="configurator">
-        <div class="container">
-            <div class="section-title reveal"><p>Kreator</p><h2>Co automatyzujemy?</h2></div>
-            <div class="config-grid reveal">
-                <div class="config-item" onclick="toggleOption(this, 'Światło')"><i class="fa-solid fa-lightbulb"></i><h4>Oświetlenie</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Ciepło')"><i class="fa-solid fa-temperature-three-quarters"></i><h4>Ogrzewanie</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Rolety')"><i class="fa-solid fa-border-all"></i><h4>Rolety</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Bramy')"><i class="fa-solid fa-dungeon"></i><h4>Bramy</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Kamera')"><i class="fa-solid fa-video"></i><h4>Kamery</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Alarm')"><i class="fa-solid fa-shield-halved"></i><h4>Alarm</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Audio')"><i class="fa-solid fa-music"></i><h4>Audio</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Ogród')"><i class="fa-solid fa-tree"></i><h4>Ogród</h4></div>
-            </div>
-            <div class="config-summary reveal" id="summary-box" style="display:none;">
-                <h3 style="margin-bottom: 15px;">Wybrane:</h3>
-                <p id="selected-items" style="color: var(--primary); font-weight: 700; margin-bottom: 25px;"></p>
-                <button class="btn" onclick="sendConfig()">Wyceń zestaw</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="demo" class="demo-section">
-        <div class="container">
-            <div class="section-title reveal"><p>Demo</p><h2>Zobacz jak to działa</h2></div>
-            <div class="browser-mockup reveal">
-                <div class="browser-header"><div style="display:flex; gap:5px;"><div style="width:10px; height:10px; background:#ef4444; border-radius:50%"></div><div style="width:10px; height:10px; background:#f59e0b; border-radius:50%"></div><div style="width:10px; height:10px; background:#22c55e; border-radius:50%"></div></div></div>
-                <div class="demo-tabs">
-                    <div class="demo-tab active" onclick="switchDemo('dash')">Pulpit</div>
-                    <div class="demo-tab" onclick="switchDemo('auto')">Logika</div>
-                </div>
-                <div id="demo-dash" class="demo-content active">
-                    <div class="demo-layout">
-                        <div style="flex:1"><h3>Wszystko w jednym</h3><p>Pełna kontrola nad domem z jednego ekranu.</p></div>
-                        <div class="demo-visual"><i class="fa-solid fa-tablet-screen-button" style="font-size:3rem"></i></div>
-                    </div>
-                </div>
-                <div id="demo-auto" class="demo-content">
-                    <div class="demo-layout">
-                        <div style="flex:1"><h3>Automatyzacja</h3><p>Dom reaguje sam na Twoją obecność.</p></div>
-                        <div class="demo-visual" style="background:#1e293b"><span style="color:#a5b4fc; font-family:monospace">trigger: state...</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ SECTION (NOWY BAJER) -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <div class="section-title reveal"><p>Pytania</p><h2>FAQ</h2></div>
-            <div class="reveal" style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-item">
-                    <div class="faq-question">Czy to działa bez internetu? <i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p style="padding-bottom:20px">Tak! Cały system Home Assistant działa lokalnie. Internet potrzebny jest tylko do zdalnego dostępu z telefonu poza domem.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Co jeśli padnie prąd? <i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p style="padding-bottom:20px">System wstanie automatycznie po powrocie zasilania. Możemy też zamontować zasilacz UPS, który utrzyma system przy życiu przez kilka godzin.</p></div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Czy mogę rozbudować system później? <i class="fa-solid fa-chevron-down"></i></div>
-                    <div class="faq-answer"><p style="padding-bottom:20px">Jasne. To system otwarty. Dziś robimy światło, za rok bramę, a za dwa lata nawadnianie ogrodu. Pełna elastyczność.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- REALIZACJE (NAPRAWIONE) -->
     <section id="realizacje" class="portfolio">
         <div class="container">
             <div class="section-title reveal"><p>Korzyści</p><h2>Co zyskujesz?</h2></div>
             <div class="portfolio-grid">
-                <!-- Komfort -->
                 <div class="portfolio-item reveal">
-                    <div class="portfolio-img" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">
-                        <i class="fa-solid fa-couch"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <span>Komfort</span>
-                        <h4>Sceny Świetlne</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top:5px;">Jeden klik i salon zmienia się w kino. Rolety w dół, światła przygasają.</p>
-                    </div>
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);"><i class="fa-solid fa-couch"></i></div>
+                    <div class="portfolio-info"><span>Komfort</span><h4>Sceny Świetlne</h4><p>Jeden klik i salon zmienia się w kino. Rolety w dół, światła przygasają.</p></div>
                 </div>
-
-                <!-- Oszczędność -->
                 <div class="portfolio-item reveal">
-                    <div class="portfolio-img" style="background: linear-gradient(135deg, #10b981, #34d399);">
-                        <i class="fa-solid fa-piggy-bank"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <span>Pieniądze</span>
-                        <h4>Inteligentne Grzanie</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top:5px;">Grzejniki zakręcają się same, gdy otworzysz okno. Oszczędność do 30%.</p>
-                    </div>
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #10b981, #34d399);"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <div class="portfolio-info"><span>Pieniądze</span><h4>Oszczędność</h4><p>Inteligentne ogrzewanie to nawet 30% niższe rachunki w skali roku.</p></div>
                 </div>
-
-                <!-- Bezpieczeństwo -->
                 <div class="portfolio-item reveal">
-                    <div class="portfolio-img" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
-                        <i class="fa-solid fa-house-flood-water"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <span>Bezpieczeństwo</span>
-                        <h4>Anty-Zalanie</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top:5px;">System sam zakręci główny zawór wody, gdy wykryje wyciek pod pralką.</p>
-                    </div>
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);"><i class="fa-solid fa-house-flood-water"></i></div>
+                    <div class="portfolio-info"><span>Bezpieczeństwo</span><h4>Anty-Zalanie</h4><p>System automatycznie odcina wodę, gdy wykryje wyciek pod pralką.</p></div>
                 </div>
-
-                 <!-- Wygoda (Dodatkowy) -->
                  <div class="portfolio-item reveal">
-                    <div class="portfolio-img" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <span>Wygoda</span>
-                        <h4>Brama GPS</h4>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top:5px;">Brama otwiera się sama, gdy podjeżdżasz autem pod dom. Magia.</p>
-                    </div>
+                    <div class="portfolio-img" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="portfolio-info"><span>Wygoda</span><h4>Brama GPS</h4><p>Brama otwiera się sama, gdy podjeżdżasz autem pod dom. Magia.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title reveal"><p>Wiedza</p><h2>FAQ</h2></div>
+            <div class="reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">Czy to działa bez internetu? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Tak! Cały system Home Assistant działa lokalnie. Internet potrzebny jest tylko do zdalnego dostępu z telefonu poza domem.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Co jeśli padnie prąd? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>System wstanie automatycznie po powrocie zasilania. Możemy też zamontować zasilacz UPS, który utrzyma system przy życiu przez kilka godzin.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Czy mogę rozbudować system później? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Jasne. To system otwarty. Dziś robimy światło, za rok bramę, a za dwa lata nawadnianie ogrodu. Pełna elastyczność.</p></div>
                 </div>
             </div>
         </div>
@@ -451,22 +222,30 @@
     <footer id="kontakt">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column" style="max-width:300px">
-                    <a href="#" class="logo" style="color:white; margin-bottom:20px; display:block">Mas<span>SmartH</span></a>
-                    <p style="color:#94a3b8; font-size:0.9rem">Twój dom w Twoich rękach.</p>
+                <div class="footer-column">
+                    <a href="index.html" class="logo" style="color:white; display:block; margin-bottom: 20px;">Mas<span>SmartH</span></a>
+                    <p>Twój dom w Twoich rękach.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Nawigacja</h4>
+                    <ul>
+                        <li><a href="index.html">Strona główna</a></li>
+                        <li><a href="oferta.html">Oferta</a></li>
+                        <li><a href="demo.html">Demo</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Kontakt</h4>
                     <ul>
-                        <li><i class="fa-solid fa-envelope" style="color:var(--primary)"></i> kontakt@massmarth.pl</li>
-                        <li><i class="fa-brands fa-linkedin" style="color:var(--primary)"></i> LinkedIn</li>
+                        <li><i class="fa-solid fa-envelope"></i> kontakt@massmarth.pl</li>
+                        <li><i class="fa-brands fa-linkedin"></i> LinkedIn</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">&copy; 2025 MasSmartH.</div>
         </div>
     </footer>
-
+    
     <a href="#kontakt" class="fab-contact"><i class="fa-solid fa-phone"></i></a>
 
     <script>
@@ -514,21 +293,25 @@
         let i=0, timer;
         function type() {
             const el=document.querySelector('.hero-typing');
-            const w=txts[i].split("");
-            const loop=()=>{
-                if(w.length>0) { el.innerHTML+=w.shift(); timer=setTimeout(loop,100); }
-                else setTimeout(del,2000);
-            };
-            loop();
+            if(el) {
+                const w=txts[i].split("");
+                const loop=()=>{
+                    if(w.length>0) { el.innerHTML+=w.shift(); timer=setTimeout(loop,100); }
+                    else setTimeout(del,2000);
+                };
+                loop();
+            }
         }
         function del() {
             const el=document.querySelector('.hero-typing');
-            const w=txts[i].split("");
-            const loop=()=>{
-                if(w.length>0) { w.pop(); el.innerHTML=w.join(""); timer=setTimeout(loop,50); }
-                else { i=(i+1)%txts.length; type(); }
-            };
-            loop();
+            if(el) {
+                const w=txts[i].split("");
+                const loop=()=>{
+                    if(w.length>0) { w.pop(); el.innerHTML=w.join(""); timer=setTimeout(loop,50); }
+                    else { i=(i+1)%txts.length; type(); }
+                };
+                loop();
+            }
         }
         type();
 
@@ -543,35 +326,14 @@
         }
         reveal();
 
-        // CONFIG & TABS
-        let opts=[];
-        function toggleOption(el, n) {
-            el.classList.toggle('selected');
-            opts = el.classList.contains('selected') ? [...opts, n] : opts.filter(x=>x!==n);
-            const box = document.getElementById('summary-box');
-            box.style.display = opts.length?'block':'none';
-            document.getElementById('selected-items').innerText = opts.join(', ');
-        }
-        function sendConfig() { alert("Wybrano: "+opts.join(', ')); }
-        function switchDemo(t) {
-            document.querySelectorAll('.demo-tab').forEach(x=>x.classList.remove('active'));
-            document.querySelectorAll('.demo-content').forEach(x=>x.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById('demo-'+t).classList.add('active');
-        }
-
         // FAQ ACCORDION
         document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => {
+            q.onclick = () => {
                 const item = q.parentElement;
                 item.classList.toggle('active');
                 const ans = item.querySelector('.faq-answer');
-                if(item.classList.contains('active')) {
-                    ans.style.maxHeight = ans.scrollHeight + "px";
-                } else {
-                    ans.style.maxHeight = null;
-                }
-            });
+                ans.style.maxHeight = item.classList.contains('active') ? ans.scrollHeight + "px" : null;
+            }
         });
     </script>
 </body>
