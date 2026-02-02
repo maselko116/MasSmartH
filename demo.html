@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Systemu | MasSmartH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- STYLE STRONY (ZGODNE Z INDEX.HTML) --- */
+        :root {
+            --primary: #6366f1; 
+            --secondary: #3b82f6;
+            --dark: #0f172a;
+            --text-gray: #475569;
+            --bg-light: #ffffff;
+            --bg-offset: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: rgba(0,0,0,0.05);
+            --brand-gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --radius: 16px;
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.dark-mode {
+            --dark: #f1f5f9; --text-gray: #94a3b8; --bg-light: #0f172a;
+            --bg-offset: #1e293b; --card-bg: #1e293b; --border-color: rgba(255,255,255,0.05);
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-light); 
+            color: var(--text-gray); 
+            margin: 0; 
+            overflow-x: hidden; 
+            transition: background 0.5s, color 0.5s; /* Płynne przejście dark mode */
+        }
+        
+        a { text-decoration: none; color: inherit; } ul { list-style: none; padding: 0; margin: 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER */
+        header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 1000; transition: background 0.5s; }
+        body.dark-mode header { background: rgba(15, 23, 42, 0.8); }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--dark); display: flex; gap: 10px; align-items: center; }
+        .logo span { background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
+        
+        .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); transition: var(--transition); }
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; }
+
+        /* --- HERO (TELEFON) --- */
+        .hero {
+            padding: 60px 0;
+            display: flex;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%), radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-welcome h1 { font-size: 3.5rem; line-height: 1.1; font-weight: 800; color: var(--dark); margin-bottom: 20px; }
+        .hero-welcome .line2 { color: var(--primary); }
+        .lead { font-size: 1.25rem; line-height: 1.6; margin-bottom: 40px; color: var(--text-gray); }
+
+        .hero-buttons { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        
+        /* Styl przycisku zgodny z index.html */
+        .btn-primary { 
+            background: var(--brand-gradient); 
+            color: white; 
+            padding: 12px 32px; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            font-size: 1.1rem; 
+            transition: var(--transition); 
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35); 
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5); 
+        }
+        
+        .secondary-link { font-weight: 600; color: var(--dark); border-bottom: 2px solid transparent; transition: 0.3s; }
+        .secondary-link:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* --- RAMKA TELEFONU --- */
+        .hero-demo { position: relative; display: flex; justify-content: center; }
+        .demo-frame-wrapper {
+            width: 360px; height: 720px;
+            background: #1c1c1e; border-radius: 45px;
+            box-shadow: 0 0 0 12px #1c1c1e, 0 30px 60px rgba(0,0,0,0.4), inset 0 0 20px rgba(255,255,255,0.1);
+            position: relative; overflow: hidden;
+        }
+        .demo-frame-wrapper::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 150px; height: 28px; background: #1c1c1e; border-bottom-left-radius: 18px; border-bottom-right-radius: 18px; z-index: 20; }
+        .demo-frame-wrapper::after { content: ''; position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 120px; height: 5px; background: rgba(255,255,255,0.2); border-radius: 10px; z-index: 20; pointer-events: none; }
+
+        /* Iframe Styles */
+        iframe { width: 100%; height: 100%; border: none; background-color: #fff; -webkit-overflow-scrolling: touch; }
+        #HAdemo { border-radius: 35px; } /* Zaokrąglenia tylko dla telefonu */
+        
+        /* Loader */
+        .loading-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-light); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5; transition: opacity 0.5s; pointer-events: none; }
+        .spinner { width: 40px; height: 40px; border: 4px solid rgba(0,0,0,0.1); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* --- PANEL NAŚCIENNY (TABLET) --- */
+        .wall-panel-section {
+            padding: 100px 0;
+            background: var(--bg-offset); /* Zmienione na zmienną */
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            transition: background 0.5s;
+        }
+        
+        .wall-panel-container {
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .wall-tablet {
+            width: 100%;
+            aspect-ratio: 16/10; /* Proporcje tabletu */
+            background: #111;
+            border-radius: 24px;
+            box-shadow: 
+                0 20px 50px rgba(0,0,0,0.3), /* Cień rzucany na ścianę */
+                0 0 0 14px #1c1c1e, /* Ramka */
+                inset 0 0 20px rgba(0,0,0,0.5); /* Cień wewnętrzny ekranu */
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-buttons { justify-content: center; }
+            .demo-frame-wrapper { margin: 0 auto; width: 320px; height: 640px; }
+            .wall-tablet { aspect-ratio: 16/9; } /* Na mobilce trochę węższy */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAGŁÓWEK -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo"><i class="fa-solid fa-house-signal" style="color: var(--primary);"></i>Mas<span>SmartH</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Strona główna</a></li>
+                    <li><a href="oferta.html">Oferta</a></li>
+                    <li><a href="demo.html" class="active">Demo</a></li>
+                    <li><a href="index.html#kontakt">Kontakt</a></li>
+                    <div class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></div>
+                </ul>
+                <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- GŁÓWNA SEKCJA (HERO Z IFRAME TELEFONU) -->
+    <div class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                
+                <!-- LEWA STRONA: TEKST -->
+                <div class="hero-welcome">
+                    <h1>Ożyw swój<br><span class="line2">inteligentny dom</span></h1>
+                    <p class="lead">
+                        To nie jest zwykła makieta. Po prawej widzisz <strong>prawdziwy, działający system</strong>.
+                        Pobaw się nim. Sprawdź oświetlenie, historię zużycia energii i zobacz jak szybko to działa.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="konfigurator.html" class="btn-primary">
+                            Rozpocznij wycenę <i class="fa-solid fa-arrow-right" style="margin-left:8px;"></i>
+                        </a>
+                        <div>
+                            <a href="https://demo.home-assistant.io" target="_blank" class="secondary-link">Otwórz w pełnym oknie</a>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px; display: flex; gap: 20px; align-items: center; opacity: 0.8;">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <i class="fa-brands fa-github" style="font-size:2rem;"></i>
+                            <span style="font-size:0.9rem;">Oparte na<br><strong>Open Source</strong></span>
+                        </div>
+                        <div style="width: 1px; height: 40px; background: #ddd;"></div>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <i class="fa-solid fa-shield-halved" style="font-size:1.8rem;"></i>
+                            <span style="font-size:0.9rem;">100%<br><strong>Lokalnie</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRAWA STRONA: TELEFON Z IFRAME -->
+                <div class="hero-demo">
+                    <div class="demo-frame-wrapper" id="phoneFrame">
+                        <!-- Placeholder -->
+                        <div class="loading-placeholder" id="phoneLoader">
+                            <div class="spinner"></div>
+                            <p style="margin-top:15px; font-weight:600; color: var(--text-gray);">Ładowanie systemu...</p>
+                        </div>
+                        <!-- IFRAME TELEFONU -->
+                        <iframe id="HAdemoPhone" 
+                                title="Home Assistant Phone Demo" 
+                                src="https://demo.home-assistant.io/?frontpage"
+                                allow="fullscreen"
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SEKCJA PANELU NAŚCIENNEGO (TABLET Z IFRAME) -->
+    <section class="wall-panel-section">
+        <div class="container">
+            <div class="section-title" style="margin-bottom: 20px; text-align: center;">
+                <h2 style="font-size: 2.5rem; color: var(--dark); font-weight: 800;">Centrum dowodzenia</h2>
+                <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 40px;">
+                    Tak wygląda Twój dom na dużym ekranie. Zamontuj tablet na ścianie w przedpokoju i miej wszystko pod kontrolą jednym rzutem oka.
+                </p>
+            </div>
+
+            <div class="wall-panel-container">
+                <div class="wall-tablet">
+                    <!-- Placeholder -->
+                    <div class="loading-placeholder" id="tabletLoader">
+                        <div class="spinner"></div>
+                        <p style="margin-top:15px; font-weight:600; color: var(--text-gray);">Ładowanie panelu...</p>
+                    </div>
+                    <!-- IFRAME TABLETU -->
+                    <iframe id="HAdemoTablet"
+                            title="Home Assistant Tablet Demo"
+                            src="https://demo.home-assistant.io/"
+                            allow="fullscreen"
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // DARK MODE
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            if(document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        if(localStorage.getItem('theme')==='dark') toggleTheme();
+
+        // MENU MOBILNE
+        document.querySelector('.menu-toggle').onclick = () => {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        };
+
+        // FUNKCJA DO UKRYWANIA LOADERÓW
+        function handleIframeLoad(iframeId, loaderId) {
+            const iframe = document.getElementById(iframeId);
+            const loader = document.getElementById(loaderId);
+            
+            if(iframe && loader) {
+                iframe.onload = function() {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                };
+            }
+        }
+
+        // Zainicjuj loadery dla obu ramek
+        handleIframeLoad('HAdemoPhone', 'phoneLoader');
+        handleIframeLoad('HAdemoTablet', 'tabletLoader');
+    </script>
+</body>
+</html>
