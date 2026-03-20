@@ -484,12 +484,15 @@ footer::before {
 .hero-typing {
     color: var(--primary);
     position: relative;
+    display: inline-block;
+    min-height: 1.2em;
+    vertical-align: bottom;
 }
 
 .hero-typing::after {
     content: '|';
-    position: absolute;
-    right: -15px;
+    position: relative;
+    margin-left: 2px;
     animation: blink 0.7s infinite;
 }
 

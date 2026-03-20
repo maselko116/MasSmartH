@@ -287,6 +287,11 @@
         style="position:fixed; top:10px; left:10px; background: linear-gradient(135deg, #6366f1, #3b82f6); color:white; padding:5px 10px; border-radius:20px; z-index:9999; font-weight:bold; font-size:12px; box-shadow: 0 4px 10px rgba(99,102,241,0.4);">
         v2.1 Aktualizacja!</div>
 
+    <!-- PASEK POSTĘPU -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="progressBar"></div>
+    </div>
+
     <header>
         <div class="container">
             <nav>
@@ -590,7 +595,16 @@
                 if (r.getBoundingClientRect().top < window.innerHeight - 50) r.classList.add('active');
             });
         }
-        window.addEventListener('scroll', reveal);
+        window.addEventListener('scroll', function() {
+            reveal();
+            // SCROLL PROGRESS
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            if (document.getElementById('progressBar')) {
+                document.getElementById('progressBar').style.width = scrolled + '%';
+            }
+        });
         reveal();
     </script>
 
