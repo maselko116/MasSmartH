@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasSmartH | Twój Inteligentny Dom</title>
+    <title>Kontakt | MasSmartH</title>
     <meta name="description"
         content="Profesjonalne systemy Smart Home oparte o Home Assistant. Pełna kontrola, bezpieczeństwo i prywatność. Bez chmur i abonamentów.">
     <meta property="og:title" content="MasSmartH | Twój Inteligentny Dom">
@@ -16,7 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -37,11 +36,11 @@
                 <a href="index.html" class="logo"><i class="fa-solid fa-house-signal" style="color: var(--primary);"
                         aria-hidden="true"></i>Mas<span>SmartH</span></a>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Strona główna</a></li>
+                    <li><a href="index.html">Strona główna</a></li>
                     <li><a href="oferta.html">Oferta</a></li>
                     <li><a href="demo.html">Demo</a></li>
                     <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="kontakt.html" class="active">Kontakt</a></li>
                     <!-- Przycisk Dark Mode -->
                     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Przełącz motyw"
                         title="Zmień motyw">
@@ -54,107 +53,58 @@
             </nav>
         </div>
     </header>
-
-    <main style="flex-grow: 1;">
-        <section class="hero">
+    <main style="flex-grow: 1; display: flex; align-items: center; padding: 40px 0;">
+        <section class="contact-section">
             <div class="container">
-                <div class="hero-content reveal">
-                    <h1>Twój dom, tylko <br><span class="hero-typing"></span></h1>
-                    <p>Profesjonalne systemy Smart Home oparte o Home Assistant. Pełna kontrola, bezpieczeństwo i
-                        prywatność. Bez chmur i abonamentów.</p>
-                    <div class="hero-actions">
-                        <a href="oferta.html" class="btn">Sprawdź Ofertę</a>
-                        <a href="demo.html" class="btn btn-outline">Zobacz Demo</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="container">
-            <div class="stats-section reveal">
-                <div class="container stats-grid">
-                    <div class="stat-item">
-                        <h3 data-target="150">0</h3>
-                        <p>Projektów</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 data-target="30">0</h3>
-                        <p>% Oszczędności</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 data-target="100">0</h3>
-                        <p>% Prywatności</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 data-target="24">0</h3>
-                        <p>h Wsparcia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section class="about">
-            <div class="container">
-                <div class="section-title reveal">
-                    <p>O marce</p>
-                    <h2>Dlaczego MasSmartH?</h2>
-                </div>
-                <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <p style="font-size: 1.1rem; margin: 0 auto 20px;">
-                        Tworzę systemy, które działają dla Ciebie, a nie dla korporacji. Stawiam na rozwiązania
-                        <strong>Open Source</strong> (Home Assistant), które gwarantują, że Twoje dane zostają w domu.
-                    </p>
-                    <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600; margin: 0 auto;">
-                        Brak internetu? Żaden problem. Mój system działa w pełni lokalnie.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="realizacje" class="portfolio">
-            <div class="container">
-                <div class="section-title reveal">
-                    <p>Korzyści</p>
-                    <h2>Co zyskujesz?</h2>
-                </div>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);"><i
-                                class="fa-solid fa-couch" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Komfort</span>
-                            <h4>Sceny Świetlne</h4>
-                            <p>Jeden klik i salon zmienia się w kino. Rolety w dół, światła przygasają.</p>
+                <div class="contact-grid">
+                    <div class="contact-info reveal active">
+                        <p
+                            style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 10px;">
+                            Masz pytania?</p>
+                        <h2>Bądźmy w kontakcie</h2>
+                        <p class="desc">Zastanawiasz się nad inteligentnym domem? Rozwieję Twoje wątpliwości. Napisz do
+                            mnie lub zadzwoń, a przygotuję darmową wstępną wycenę dla Twojego budynku.</p>
+                        <div class="contact-method">
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="method-text">
+                                <h4>Email</h4>
+                                <a href="mailto:kontakt@massmarth.pl">kontakt@massmarth.pl</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
+                            <div class="method-text">
+                                <h4>LinkedIn</h4>
+                                <a href="#">Profil MasSmartH</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #10b981, #34d399);"><i
-                                class="fa-solid fa-piggy-bank" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Pieniądze</span>
-                            <h4>Oszczędność</h4>
-                            <p>Inteligentne ogrzewanie to nawet 30% niższe rachunki w skali roku.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);"><i
-                                class="fa-solid fa-house-flood-water" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Bezpieczeństwo</span>
-                            <h4>Anty-Zalanie</h4>
-                            <p>System automatycznie odcina wodę, gdy wykryje wyciek pod pralką.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);"><i
-                                class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Wygoda</span>
-                            <h4>Brama GPS</h4>
-                            <p>Brama otwiera się sama, gdy podjeżdżasz autem pod dom. Magia.</p>
-                        </div>
+                    <div class="contact-form-box reveal active">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 25px; color: var(--dark);">Wyślij wiadomość</h3>
+                        <form
+                            onsubmit="event.preventDefault(); alert('Dziękuję za wiadomość! Odezwiemy się wkrótce.');">
+                            <div class="form-group">
+                                <label>Twoje Imię</label>
+                                <input type="text" class="form-control" placeholder="Jan Kowalski" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Twój adres E-mail</label>
+                                <input type="email" class="form-control" placeholder="jan@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Wiadomość</label>
+                                <textarea class="form-control" placeholder="Opisz krótko o co chciałbyś zapytać..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn"
+                                style="width: 100%; border-radius: 12px; margin-top: 10px;">Wyślij zapytanie <i
+                                    class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -206,15 +156,11 @@
             if (stats && winScroll > stats.offsetTop - window.innerHeight + 100 && !window.counted) {
                 document.querySelectorAll('.stat-item h3').forEach(c => {
                     const t = +c.getAttribute('data-target');
-                    const inc = Math.max(1, t / 40); // Szybszy krok
+                    const inc = t / 200;
                     const upd = () => {
                         const n = +c.innerText;
-                        if (n < t) {
-                            c.innerText = Math.ceil(n + inc);
-                            setTimeout(upd, 15); // Krótszy czas
-                        } else {
-                            c.innerText = t + "+";
-                        }
+                        if (n < t) { c.innerText = Math.ceil(n + inc); setTimeout(upd, 20); }
+                        else c.innerText = t + "+";
                     };
                     upd();
                 });

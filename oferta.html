@@ -1,192 +1,303 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oferta | MasSmartH</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* --- STYLE ZGODNE Z INDEX.HTML --- */
-        :root {
-            --primary: #6366f1; 
-            --secondary: #3b82f6;
-            --dark: #0f172a;
-            --text-gray: #475569;
-            --bg-light: #ffffff;
-            --bg-offset: #f8fafc;
-            --card-bg: #ffffff;
-            --border-color: rgba(0,0,0,0.05);
-            --brand-gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            
-            --radius: 16px;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* ===== OFERTA PAGE - SPECYFICZNE STYLE ===== */
+        .offer-page-hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at 60% 0%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 30% 100%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
         }
 
-        body.dark-mode {
-            --dark: #f1f5f9;
-            --text-gray: #94a3b8;
-            --bg-light: #0f172a;
-            --bg-offset: #1e293b;
-            --card-bg: #1e293b;
-            --border-color: rgba(255,255,255,0.05);
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        .offer-page-hero .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(59,130,246,0.12));
+            border: 1px solid rgba(99,102,241,0.25);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
+        .offer-page-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .offer-page-hero p.sub {
+            font-size: 1.15rem;
+            max-width: 620px;
+            margin: 0 auto;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* ===== SIATKA 2-KOLUMNOWA ===== */
+        .offers-section {
+            padding: 20px 0 80px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        /* Ostatni kafel (7.) rozciąga się na pełną szerokość */
+        .offer-card-v2:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+        }
+
+        .offer-card-v2 {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offer-card-v2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--brand-gradient);
+            border-radius: 20px 0 0 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .offer-card-v2:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 48px -8px rgba(0,0,0,0.15);
+            border-color: rgba(99,102,241,0.2);
+        }
+
+        .offer-card-v2:hover::before {
+            opacity: 1;
+        }
+
+        /* Specjalny kafel "featured" */
+        .offer-card-v2.featured {
+            border-color: rgba(99,102,241,0.3);
+            background: linear-gradient(135deg, rgba(99,102,241,0.04) 0%, var(--card-bg) 40%);
+        }
+
+        .offer-card-v2.featured::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon-v2 {
+            width: 58px;
+            height: 58px;
+            min-width: 58px;
+            background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(59,130,246,0.12));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .offer-card-v2:hover .card-icon-v2,
+        .offer-card-v2.featured .card-icon-v2 {
+            background: var(--brand-gradient);
+            color: white;
+        }
+
+        .card-header-text h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(99,102,241,0.1);
+            padding: 2px 10px;
+            border-radius: 50px;
+        }
+
+        .card-tag.tag-popular {
+            color: #10b981;
+            background: rgba(16,185,129,0.1);
+        }
+
+        .card-tag.tag-premium {
+            color: #f59e0b;
+            background: rgba(245,158,11,0.1);
+        }
+
+        .card-desc {
+            font-size: 0.97rem;
             color: var(--text-gray);
             line-height: 1.6;
-            background-color: var(--bg-light);
-            overflow-x: hidden;
-            transition: background-color 0.5s ease, color 0.5s ease;
+            margin-bottom: 24px;
+            max-width: 100%;
         }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        h1, h2, h3, h4 { color: var(--dark); line-height: 1.2; transition: color 0.5s ease; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* UI */
-        .btn {
-            display: inline-block; padding: 14px 36px;
-            background: var(--brand-gradient); color: white;
-            border-radius: 50px; font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
-            border: none; cursor: pointer; position: relative; overflow: hidden; z-index: 1;
+        .card-features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5); }
 
-        .section-title { text-align: center; margin: 4rem 0; }
-        .section-title h2 { font-size: 2.8rem; margin-bottom: 10px; font-weight: 800; letter-spacing: -1px; }
-        .section-title p { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; }
-
-        /* NAWIGACJA */
-        header {
-            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px);
-            position: sticky; top: 0; z-index: 1000;
+        .card-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
             border-bottom: 1px solid var(--border-color);
-            transition: background 0.5s ease, border-color 0.5s ease;
-        }
-        body.dark-mode header { background: rgba(15, 23, 42, 0.8); }
-
-        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--dark); display: flex; align-items: center; gap: 10px; }
-        .logo span { background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { font-weight: 500; color: var(--dark); transition: var(--transition); font-size: 0.95rem; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
-        
-        .theme-toggle { cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg-offset); transition: background 0.3s; }
-        .menu-toggle { display: none; font-size: 1.5rem; color: var(--dark); cursor: pointer; }
-
-        /* --- KARTY OFERTY --- */
-        .offer { padding: 60px 0 60px; /* Zmniejszony padding dolny, bo configurator ma margin */ }
-        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-
-        .offer-card {
-            background: var(--card-bg);
-            padding: 45px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative; overflow: hidden; height: 100%;
-        }
-        
-        .offer-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15); }
-
-        .offer-card::after {
-            content: ''; position: absolute; top: -50%; right: -50%; width: 200px; height: 200px;
-            background: var(--primary); filter: blur(80px); opacity: 0.05; border-radius: 50%;
+            font-size: 0.9rem;
+            color: var(--dark);
         }
 
-        .icon-box {
-            width: 70px; height: 70px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
-            border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 25px;
-            color: var(--primary); font-size: 1.8rem;
+        .card-features li:last-child {
+            border-bottom: none;
+        }
+
+        .card-features li i {
+            color: var(--primary);
+            font-size: 0.8rem;
+            background: rgba(99,102,241,0.1);
+            padding: 4px;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-footer-offer {
+            margin-top: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .price-hint {
+            font-size: 0.88rem;
+            color: var(--text-gray);
+        }
+
+        .price-hint strong {
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .btn-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: var(--transition);
-        }
-        .offer-card:hover .icon-box { background: var(--brand-gradient); color: white; transform: scale(1.1); }
-
-        .offer-card h3 { margin-bottom: 15px; font-size: 1.4rem; font-weight: 700; }
-        .offer-card p { margin-bottom: 20px; }
-        .offer-card ul { margin-top: 20px; }
-        .offer-card li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
-        .offer-card li i { color: var(--secondary); background: rgba(59, 130, 246, 0.1); padding: 5px; border-radius: 50%; font-size: 0.7rem; }
-
-        /* --- KONFIGURATOR (ODDZIELONA SEKCJA) --- */
-        .configurator { 
-            margin-top: 120px; /* DUŻY ODSTĘP OD GÓRY */
-            padding: 100px 0; 
-            background: var(--bg-offset); 
-            transition: background 0.5s ease; 
-            border-radius: var(--radius); 
-            margin-bottom: 80px; 
-            border: 1px solid var(--border-color); /* Delikatna ramka dla odcięcia */
-        }
-        
-        .config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-bottom: 50px; }
-
-        .config-item {
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 35px 20px;
-            text-align: center;
+            background: var(--brand-gradient);
+            color: white;
+            border: none;
             cursor: pointer;
-            transition: var(--transition);
-            background: var(--card-bg);
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            text-decoration: none;
         }
 
-        .config-item:hover { border-color: var(--secondary); transform: translateY(-5px); box-shadow: var(--shadow); }
-        .config-item.selected { border-color: var(--primary); background: rgba(99, 102, 241, 0.05); }
-        .config-item i { font-size: 2.5rem; color: #cbd5e1; margin-bottom: 20px; transition: var(--transition); }
-        .config-item:hover i, .config-item.selected i { color: var(--primary); transform: scale(1.1); }
-        .config-item h4 { font-weight: 600; color: var(--text-gray); }
-        .config-item.selected h4 { color: var(--dark); font-weight: 700; }
-
-        .config-summary { 
-            text-align: center; padding: 40px; background: var(--card-bg); 
-            border-radius: var(--radius); max-width: 800px; margin: 0 auto; 
-            border: 1px solid var(--border-color); 
-            box-shadow: var(--shadow);
+        .btn-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99,102,241,0.4);
         }
 
-        /* ANIMACJE */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .btn-card.secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid rgba(99,102,241,0.3);
+        }
 
-        /* RWD */
-        @media (max-width: 768px) {
-            .nav-links { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: var(--card-bg); flex-direction: column; padding: 30px; border-bottom: 1px solid var(--border-color); }
-            .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
+        .btn-card.secondary:hover {
+            background: rgba(99,102,241,0.06);
+            border-color: var(--primary);
+            box-shadow: none;
+        }
+
+        /* Konfigurator */
+        .configurator {
+            margin: 0 0 80px;
+            padding: 80px 0;
+            background: var(--bg-offset);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 900px) {
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+            .offer-card-v2:last-child:nth-child(odd) {
+                grid-column: auto;
+            }
         }
     </style>
 </head>
+
 <body>
+    <script>if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');</script>
+    <div
+        style="position:fixed; top:10px; left:10px; background: linear-gradient(135deg, #6366f1, #3b82f6); color:white; padding:5px 10px; border-radius:20px; z-index:9999; font-weight:bold; font-size:12px; box-shadow: 0 4px 10px rgba(99,102,241,0.4);">
+        v2.1 Aktualizacja!</div>
 
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo"><i class="fa-solid fa-house-signal" style="color: var(--primary);"></i>Mas<span>SmartH</span></a>
+                <a href="index.html" class="logo"><i class="fa-solid fa-house-signal"
+                        style="color: var(--primary);"></i>Mas<span>SmartH</span></a>
                 <ul class="nav-links">
                     <li><a href="index.html">Strona główna</a></li>
                     <li><a href="oferta.html" class="active">Oferta</a></li>
                     <li><a href="demo.html">Demo</a></li>
-                    <li><a href="index.html#faq">FAQ</a></li>
-                    <li><a href="index.html#kontakt">Kontakt</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
                     <div class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></div>
                 </ul>
                 <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -194,107 +305,265 @@
         </div>
     </header>
 
-    <div class="container offer">
-        <div class="section-title reveal">
-            <p>Możliwości</p>
-            <h2>Warianty współpracy</h2>
-        </div>
-
-        <div class="offer-grid">
-            <div class="offer-card reveal">
-                <div class="icon-box"><i class="fa-solid fa-sliders"></i></div>
-                <h3>Tylko Konfiguracja</h3>
-                <p>Masz już swój sprzęt? Skonfiguruję Twój Home Assistant i dashboard.</p>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> Integracja urządzeń</li>
-                    <li><i class="fa-solid fa-check"></i> Zdalny dostęp</li>
-                    <li><i class="fa-solid fa-check"></i> Backup danych</li>
-                </ul>
-            </div>
-
-            <div class="offer-card reveal">
-                <div class="icon-box"><i class="fa-solid fa-microchip"></i></div>
-                <h3>Własny Router + Doradztwo</h3>
-                <p>Stawiamy system na Twoim routerze z dedykowanym mini-PC.</p>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> Dobór podzespołów</li>
-                    <li><i class="fa-solid fa-check"></i> Instalacja od zera</li>
-                    <li><i class="fa-solid fa-check"></i> Sieć Zigbee/Matter</li>
-                </ul>
-            </div>
-
-            <div class="offer-card reveal">
-                <div class="icon-box"><i class="fa-solid fa-star"></i></div>
-                <h3>Full Smart Experience</h3>
-                <p>Kompleksowe wdrożenie "pod klucz". Sprzęt, sieć i pełna automatyka.</p>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> Audyt i projekt sieci</li>
-                    <li><i class="fa-solid fa-check"></i> Montaż urządzeń</li>
-                    <li><i class="fa-solid fa-check"></i> Gwarancja działania</li>
-                </ul>
-            </div>
+    <!-- HERO SEKCJA -->
+    <div class="offer-page-hero">
+        <div class="container">
+            <div class="badge reveal">Warianty współpracy</div>
+            <h1 class="reveal">Znajdź idealny<br>plan dla siebie</h1>
+            <p class="sub reveal">Od prostej konfiguracji po kompleksowe wdrożenie pod klucz — każdy dom i każdy budżet ma swoje rozwiązanie.</p>
         </div>
     </div>
 
+    <!-- SIATKA OFERT -->
+    <section class="offers-section">
+        <div class="container">
+            <div class="offers-grid">
+
+                <!-- 1. Pełne Wdrożenie Pod Klucz -->
+                <div class="offer-card-v2 featured reveal">
+                    <div class="card-top">
+                        <div class="card-icon-v2"><i class="fa-solid fa-star"></i></div>
+                        <div class="card-header-text">
+                            <h3>Pełne Wdrożenie Pod Klucz</h3>
+                            <span class="card-tag tag-premium">⭐ Premium</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">Kompleksowa realizacja od projektu po ostatni kabel. Dostajesz gotowy, działający inteligentny dom — sprzęt, instalacja, konfiguracja i szkolenie w cenie.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Audyt mieszkania/domu i projekt sieci</li>
+                        <li><i class="fa-solid fa-check"></i> Dobór i zakup wszystkich urządzeń</li>
+                        <li><i class="fa-solid fa-check"></i> Montaż fizyczny i okablowanie</li>
+                        <li><i class="fa-solid fa-check"></i> Konfiguracja Home Assistant + dashboard</li>
+                        <li><i class="fa-solid fa-check"></i> Szkolenie dla domowników</li>
+                        <li><i class="fa-solid fa-check"></i> 30 dni wsparcia po wdrożeniu</li>
+                    </ul>
+                    <div class="card-footer-offer">
+                        <div class="price-hint">od <strong>3 500 zł</strong> netto</div>
+                        <a href="kontakt.html" class="btn-card">Zapytaj o ofertę <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 2. Abonament Serwisowy -->
+                <div class="offer-card-v2 reveal">
+                    <div class="card-top">
+                        <div class="card-icon-v2"><i class="fa-solid fa-rotate"></i></div>
+                        <div class="card-header-text">
+                            <h3>Abonament Serwisowy</h3>
+                            <span class="card-tag tag-popular">🔥 Popularny</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">Miesięczna opieka techniczna nad Twoim systemem. Aktualizacje, backupy, zdalne rozwiązywanie problemów i nielimitowane konsultacje.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Zdalne monitorowanie systemu 24/7</li>
+                        <li><i class="fa-solid fa-check"></i> Automatyczne backupy konfiguracji</li>
+                        <li><i class="fa-solid fa-check"></i> Aktualizacje HA i integracji</li>
+                        <li><i class="fa-solid fa-check"></i> Nielimitowane konsultacje online</li>
+                        <li><i class="fa-solid fa-check"></i> Priorytetowa reakcja &lt; 4h</li>
+                    </ul>
+                    <div class="card-footer-offer">
+                        <div class="price-hint">od <strong>199 zł</strong> / miesiąc</div>
+                        <a href="kontakt.html" class="btn-card">Wybierz plan <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 3. Doradztwo i Projekt -->
+                <div class="offer-card-v2 reveal">
+                    <div class="card-top">
+                        <div class="card-icon-v2"><i class="fa-solid fa-compass-drafting"></i></div>
+                        <div class="card-header-text">
+                            <h3>Doradztwo i Projekt</h3>
+                            <span class="card-tag">Konsultacje</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">Nie wiesz od czego zacząć? Porozmawiamy o Twoich potrzebach, dobierzemy urządzenia i przygotuję szczegółowy plan wdrożenia z kosztorysem.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Analiza potrzeb i możliwości budynku</li>
+                        <li><i class="fa-solid fa-check"></i> Rekomendacja urządzeń z uzasadnieniem</li>
+                        <li><i class="fa-solid fa-check"></i> Orientacyjny kosztorys całości</li>
+                        <li><i class="fa-solid fa-check"></i> Plan wdrożenia krok po kroku</li>
+                    </ul>
+                    <div class="card-footer-offer">
+                        <div class="price-hint">od <strong>350 zł</strong> / sesja</div>
+                        <a href="kontakt.html" class="btn-card secondary">Umów sesję <i class="fa-solid fa-calendar-check"></i></a>
+                    </div>
+                </div>
+
+                <!-- 4. Pomoc w Zakupach + Instalacja -->
+                <div class="offer-card-v2 reveal">
+                    <div class="card-top">
+                        <div class="card-icon-v2"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <div class="card-header-text">
+                            <h3>Pomoc w Zakupach + Instalacja</h3>
+                            <span class="card-tag">Sprzęt i montaż</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">Chcesz kupić urządzenia smart, ale nie wiesz które wybrać? Pomagam znaleźć najlepszy sprzęt w Twoim budżecie i montuję go na miejscu.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Lista zakupów dopasowana do budżetu</li>
+                        <li><i class="fa-solid fa-check"></i> Zakup przez sprawdzonych dostawców</li>
+                        <li><i class="fa-solid fa-check"></i> Fizyczny montaż w lokalizacji</li>
+                        <li><i class="fa-solid fa-check"></i> Pierwszy rozruch i testy</li>
+                    </ul>
+                    <div class="card-footer-offer">
+                        <div class="price-hint">od <strong>800 zł</strong> + koszt sprzętu</div>
+                        <a href="kontakt.html" class="btn-card secondary">Zapytaj o termin <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 5. Tylko Konfiguracja HA -->
+                <div class="offer-card-v2 reveal">
+                    <div class="card-top">
+                        <div class="card-icon-v2"><i class="fa-solid fa-sliders"></i></div>
+                        <div class="card-header-text">
+                            <h3>Tylko Konfiguracja HA</h3>
+                            <span class="card-tag">Zdalna pomoc</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">Masz już sprzęt, może nawet zainstalowany Home Assistant, ale utknąłeś na konfiguracji? Zdalnie lub na miejscu ogarnę to za Ciebie.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Integracja wszystkich urządzeń</li>
+                        <li><i class="fa-solid fa-check"></i> Personalizowany dashboard</li>
+                        <li><i class="fa-solid fa-check"></i> Automatyzacje i sceny</li>
+                        <li><i class="fa-solid fa-check"></i> Zdalny dostęp (VPN / Nabu Casa)</li>
+                    </ul>
+                    <div class="card-footer-offer">
+                        <div class="price-hint">od <strong>500 zł</strong></div>
+                        <a href="kontakt.html" class="btn-card secondary">Napisz do mnie <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 6. Rozbudowa Istniejącego Systemu -->
+                <div class="offer-card-v2 reveal">
+                    <div class="card-top">
+                        <div class="card-icon-v2"><i class="fa-solid fa-layer-group"></i></div>
+                        <div class="card-header-text">
+                            <h3>Rozbudowa Systemu</h3>
+                            <span class="card-tag">Upgrade</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">Masz już podstawy smart home, ale chcesz iść dalej? Dodajemy kamery, integrujemy alarm, Alexa/Google, energię słoneczną i więcej.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Integracja kamer IP (Frigate/Reolink)</li>
+                        <li><i class="fa-solid fa-check"></i> Podłączenie alarmu i czujników</li>
+                        <li><i class="fa-solid fa-check"></i> Asystenci głosowi (Alexa, Google)</li>
+                        <li><i class="fa-solid fa-check"></i> Monitoring zużycia energii i PV</li>
+                    </ul>
+                    <div class="card-footer-offer">
+                        <div class="price-hint">wycena <strong>indywidualna</strong></div>
+                        <a href="kontakt.html" class="btn-card secondary">Omów projekt <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 7. Szkolenie i Warsztaty (pełna szerokość) -->
+                <div class="offer-card-v2 reveal">
+                    <div class="card-top">
+                        <div class="card-icon-v2"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <div class="card-header-text">
+                            <h3>Szkolenie i Warsztaty Domowe</h3>
+                            <span class="card-tag">Edukacja</span>
+                        </div>
+                    </div>
+                    <p class="card-desc">Chcesz nauczyć się samodzielnie zarządzać swoim smart domem? Organizuję praktyczne warsztaty u Ciebie w domu lub online — w tempie dopasowanym do Twoich umiejętności. Idealne dla osób, które chcą rozumieć co mają pod dachem.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-check"></i> Obsługa interfejsu Home Assistant</li>
+                        <li><i class="fa-solid fa-check"></i> Tworzenie automatyzacji i scen od podstaw</li>
+                        <li><i class="fa-solid fa-check"></i> Zarządzanie użytkownikami i dostępami</li>
+                        <li><i class="fa-solid fa-check"></i> Jak bezpiecznie aktualizować system</li>
+                        <li><i class="fa-solid fa-check"></i> Materiały szkoleniowe i nagranie sesji</li>
+                    </ul>
+                    <div class="card-footer-offer">
+                        <div class="price-hint">od <strong>250 zł</strong> / 2h sesja online lub <strong>450 zł</strong> na miejscu</div>
+                        <a href="kontakt.html" class="btn-card">Zapisz się <i class="fa-solid fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KONFIGURATOR -->
     <section class="configurator reveal">
         <div class="container">
             <div class="section-title" style="margin-top: 0;">
                 <p>Kreator wyceny</p>
                 <h2>Co chcesz zautomatyzować?</h2>
-                <p style="text-transform: none; font-weight: 400; color: var(--text-gray); margin-top: 10px;">Zaznacz elementy, które Cię interesują.</p>
+                <p style="text-transform: none; font-weight: 400; color: var(--text-gray); margin-top: 10px;">Zaznacz
+                    elementy, które Cię interesują.</p>
             </div>
-            
+
             <div class="config-grid">
-                <div class="config-item" onclick="toggleOption(this, 'Światło')"><i class="fa-solid fa-lightbulb"></i><h4>Oświetlenie</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Ogrzewanie')"><i class="fa-solid fa-temperature-three-quarters"></i><h4>Ogrzewanie</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Rolety')"><i class="fa-solid fa-border-all"></i><h4>Rolety</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Bramy')"><i class="fa-solid fa-dungeon"></i><h4>Bramy</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Kamera')"><i class="fa-solid fa-video"></i><h4>Kamery</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Alarm')"><i class="fa-solid fa-shield-halved"></i><h4>Alarm</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Audio')"><i class="fa-solid fa-music"></i><h4>Multiroom Audio</h4></div>
-                <div class="config-item" onclick="toggleOption(this, 'Ogród')"><i class="fa-solid fa-tree"></i><h4>Nawadnianie</h4></div>
+                <div class="config-item" onclick="toggleOption(this, 'Światło')"><i class="fa-solid fa-lightbulb"></i>
+                    <h4>Oświetlenie</h4>
+                </div>
+                <div class="config-item" onclick="toggleOption(this, 'Ogrzewanie')"><i
+                        class="fa-solid fa-temperature-three-quarters"></i>
+                    <h4>Ogrzewanie</h4>
+                </div>
+                <div class="config-item" onclick="toggleOption(this, 'Rolety')"><i class="fa-solid fa-border-all"></i>
+                    <h4>Rolety</h4>
+                </div>
+                <div class="config-item" onclick="toggleOption(this, 'Bramy')"><i class="fa-solid fa-dungeon"></i>
+                    <h4>Bramy</h4>
+                </div>
+                <div class="config-item" onclick="toggleOption(this, 'Kamera')"><i class="fa-solid fa-video"></i>
+                    <h4>Kamery</h4>
+                </div>
+                <div class="config-item" onclick="toggleOption(this, 'Alarm')"><i class="fa-solid fa-shield-halved"></i>
+                    <h4>Alarm</h4>
+                </div>
+                <div class="config-item" onclick="toggleOption(this, 'Audio')"><i class="fa-solid fa-music"></i>
+                    <h4>Multiroom Audio</h4>
+                </div>
+                <div class="config-item" onclick="toggleOption(this, 'Ogród')"><i class="fa-solid fa-tree"></i>
+                    <h4>Nawadnianie</h4>
+                </div>
             </div>
 
             <div class="config-summary" id="summary-box" style="display:none;">
                 <h3 style="margin-bottom: 15px;">Twój zestaw:</h3>
-                <p id="selected-items" style="color: var(--primary); font-weight: 700; margin: 15px 0; font-size: 1.2rem;"></p>
-                <button class="btn" onclick="sendConfig()">Poproś o wycenę <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i></button>
+                <p id="selected-items"
+                    style="color: var(--primary); font-weight: 700; margin: 15px 0; font-size: 1.2rem;"></p>
+                <button class="btn" onclick="sendConfig()">Poproś o wycenę <i class="fa-solid fa-arrow-right"
+                        style="margin-left: 10px;"></i></button>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="logo" style="margin-bottom: 15px; display: inline-flex;">
+                        <i class="fa-solid fa-house-signal" style="color: var(--primary);"></i>Mas<span>SmartH</span>
+                    </a>
+                    <p style="color: #94a3b8; max-width: 280px; font-size: 0.9rem;">Profesjonalne wdrożenia inteligentnego domu oparte na Home Assistant.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 style="color: white; margin-bottom: 20px; font-weight: 700;">Oferta</h4>
+                    <ul>
+                        <li><a href="oferta.html">Pełne wdrożenie</a></li>
+                        <li><a href="oferta.html">Abonament</a></li>
+                        <li><a href="oferta.html">Doradztwo</a></li>
+                        <li><a href="oferta.html">Szkolenia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 style="color: white; margin-bottom: 20px; font-weight: 700;">Serwis</h4>
+                    <ul>
+                        <li><a href="demo.html">Demo live</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; text-align: center; color: #64748b; font-size: 0.9rem;">
+                © 2024 MasSmartH — Jakub Masłowski. Wszystkie prawa zastrzeżone.
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // --- ZAAWANSOWANY DARK MODE (SYNC + PERSISTENCE) ---
-        function applyTheme(theme) {
-            const icon = document.querySelector('.theme-toggle i');
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-                if (icon) icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                document.body.classList.remove('dark-mode');
-                if (icon) icon.classList.replace('fa-sun', 'fa-moon');
-            }
-        }
-
-        function toggleTheme() {
-            const current = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', current);
-            applyTheme(current);
-        }
-
-        // 1. Sprawdź zapisany motyw przy starcie
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        }
-
-        // 2. Nasłuchuj zmian w innych kartach (synchronizacja)
-        window.addEventListener('storage', (e) => {
-            if (e.key === 'theme') {
-                applyTheme(e.newValue);
-            }
-        });
-
         // MENU TOGGLE
         document.querySelector('.menu-toggle').onclick = () => document.querySelector('.nav-links').classList.toggle('active');
 
@@ -302,7 +571,7 @@
         let selectedOptions = [];
         function toggleOption(element, name) {
             element.classList.toggle('selected');
-            if (selectedOptions.includes(name)) { selectedOptions = selectedOptions.filter(item => item !== name); } 
+            if (selectedOptions.includes(name)) { selectedOptions = selectedOptions.filter(item => item !== name); }
             else { selectedOptions.push(name); }
             updateSummary();
         }
@@ -318,11 +587,34 @@
         // ANIMACJE REVEAL
         function reveal() {
             document.querySelectorAll('.reveal').forEach(r => {
-                if(r.getBoundingClientRect().top < window.innerHeight - 50) r.classList.add('active');
+                if (r.getBoundingClientRect().top < window.innerHeight - 50) r.classList.add('active');
             });
         }
         window.addEventListener('scroll', reveal);
-        reveal(); // start
+        reveal();
+    </script>
+
+    <script>
+        // --- DARK MODE ---
+        function applyTheme(theme) {
+            const icons = document.querySelectorAll('.theme-toggle i');
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+                icons.forEach(icon => { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); });
+            } else {
+                document.body.classList.remove('dark-mode');
+                icons.forEach(icon => { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); });
+            }
+        }
+        function toggleTheme() {
+            document.body.style.transition = 'background 0.5s ease, color 0.5s ease';
+            const current = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', current);
+            applyTheme(current);
+        }
+        document.addEventListener('DOMContentLoaded', () => { applyTheme(localStorage.getItem('theme') || 'light'); });
+        window.addEventListener('storage', (e) => { if (e.key === 'theme') applyTheme(e.newValue); });
     </script>
 </body>
+
 </html>

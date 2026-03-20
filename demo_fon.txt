@@ -1,0 +1,985 @@
+
+    <header class="site-header dark">
+      
+
+
+
+<div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item three-tenths lap-two-sixths palm-one-whole ha-title">
+      <a href="/" class="site-title">
+        <div class="logo"></div>
+      </a>
+      <a class="release-date" href="/blog/2026/01/07/release-20261/" title="Latest version 2026.1.3 released January 23, 2026">
+        2026.1.3
+      </a>
+    </div>
+
+    <div class="grid__item seven-tenths lap-four-sixths palm-one-whole">
+      <nav>
+        <input type="checkbox" id="toggle">
+        <label for="toggle" class="toggle" data-open="Main Menu" data-close="⨉"></label>
+        <ul class="menu pull-right">
+          <li><a href="/installation/">Getting started</a></li>
+          <li>
+            <a href="/docs/">Documentation <iconify-icon inline="" icon="mdi:chevron-down" title="Chevron down"></iconify-icon></a>
+            <ul>
+              <li><a href="/installation/"><iconify-icon inline="" icon="simple-icons:homeassistant" title="Homeassistant"></iconify-icon> Installation</a></li>
+              <li><a href="/docs/automation/"><iconify-icon inline="" icon="mdi:robot-happy" title="Robot happy"></iconify-icon> Automations</a></li>
+              <li><a href="/dashboards/"><iconify-icon inline="" icon="mdi:gauge" title="Gauge"></iconify-icon> Dashboards</a></li>
+              <li><a href="/voice_control/"><iconify-icon inline="" icon="mdi:comment-processing-outline" title="Comment processing outline"></iconify-icon> Voice assistants</a></li>
+              <li><a href="/docs/organizing/"><iconify-icon inline="" icon="mdi:view-grid" title="View grid"></iconify-icon> Device organization</a></li>
+              <li><a href="/docs/energy/"><iconify-icon inline="" icon="mdi:solar-power-variant" title="Solar power variant"></iconify-icon> Energy management</a></li>
+              <li><a href="/docs/configuration/"><iconify-icon inline="" icon="mdi:cog" title="Cog"></iconify-icon> Advanced configuration</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Our hardware <iconify-icon inline="" icon="mdi:chevron-down" title="Chevron down"></iconify-icon></a>
+            <ul>
+              <li><a href="/green/">Home Assistant Green</a></li>
+              <li><a href="/connect/zbt-2/">Connect ZBT-2</a></li>
+              <li><a href="/connect/zwa-2/">Connect ZWA-2</a></li>
+              <li><a href="/voice-pe/">Voice Preview Edition</a></li>
+            </ul>
+          </li>
+          <li><a href="/integrations/">Integrations</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/help/">Need help?</a></li>
+          <li>
+            <div class="docsearch" id="docsearch"><button type="button" aria-label="Search (Ctrl+K)" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"><kbd class="DocSearch-Button-Key"><svg width="15" height="15" class="DocSearch-Control-Key-Icon"><path d="M4.505 4.496h2M5.505 5.496v5M8.216 4.496l.055 5.993M10 7.5c.333.333.5.667.5 1v2M12.326 4.5v5.996M8.384 4.496c1.674 0 2.116 0 2.116 1.5s-.442 1.5-2.116 1.5M3.205 9.303c-.09.448-.277 1.21-1.241 1.203C1 10.5.5 9.513.5 8V7c0-1.57.5-2.5 1.464-2.494.964.006 1.134.598 1.24 1.342M12.553 10.5h1.953" stroke-width="1.2" stroke="currentColor" fill="none" stroke-linecap="square"></path></svg></kbd><kbd class="DocSearch-Button-Key">K</kbd></span></button></div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    </header>
+
+    <div class="page-content">
+
+      
+        <div class="hero">
+  <div class="grid-wrapper">
+    <div class="grid flex">
+      <div class="hero-welcome grid__item flex__item three-fifths lap-one-whole palm-one-whole">
+        <h1>Awaken<br><span class="line2">your home</span></h1>
+<p class="lead">
+  Open source home automation that puts local control and privacy first. Powered by a worldwide community of tinkerers and DIY enthusiasts.
+</p><div class="hero-buttons">
+  <a href="/installation/" class="primary">Get started <iconify-icon inline="" icon="mdi:arrow-right"></iconify-icon></a>
+  <div>
+    <a href="https://demo.home-assistant.io" target="_blank">View live demos</a>
+    <a href="/integrations/">Browse 3400+ integrations</a>
+  </div>
+</div>
+
+<div class="hero-socialproof">
+  <a href="https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/#the-top-open-source-projects-by-contributors" target="_blank" class="">
+    <div class="hero-github-top-project">
+      <img src="/images/frontpage/hero-github-logo.svg" alt="GitHub logo">
+      <img src="/images/frontpage/hero-trophy.svg" alt="Top open source project trophy">
+      <p><strong>Top open source project</strong> by contributors in 2025</p>
+    </div>
+  </a>
+
+  <!-- <div class="hero-socialproof-asseenon">
+    <p>As seen on</p>
+    <div class="logos">
+      <a href="https://www.theverge.com/23744526/smart-home-assistant-how-to-automation" target="_blank">
+        <img src="/images/frontpage/hero-socialproof-theverge.svg" alt="The Verge"/>
+      </a>
+      <a href="https://arstechnica.com/information-technology/2021/03/how-to-achieve-smart-home-nirvana-or-home-automation-without-subscription/" target="_blank">
+        <img src="/images/frontpage/hero-socialproof-arstechnica.svg" alt="ArsTechnica" height="48"/>
+      </a>
+    </div>
+  </div> -->
+</div>
+
+
+      </div>
+      <div class="hero-demo grid__item flex__item two-fifths lap-one-whole palm-one-whole" style="text-align: center;">
+        <div class="demo-frame-wrapper">
+          <img src="/images/app-loading.webp">
+          <iframe id="HAdemo" title="Home Assistant Demo" src="https://demo.home-assistant.io/?frontpage">
+          </iframe>
+        </div>
+
+        <a id="HAdemoScreenshot" href="https://demo.home-assistant.io/" target="_blank">
+          <img src="/images/frontpage/hero_screenshot.png" alt="Home Assistant screenshot" fetchpriority="high">
+        </a>
+
+        <!-- <script>
+          document.addEventListener('mousemove', (event) => {
+            const phone = document.querySelector('#HAdemo');
+            const { innerWidth } = window;
+            const mouseX = event.clientX;
+
+            // Calculate rotation angle (-30 to 30 degrees based on cursor position)
+            const rotation = ((mouseX / innerWidth) - 0.8) * 30;
+            const skew = -((mouseX / innerWidth) - 0.8) * 4;
+
+            // Apply rotation
+            phone.style.transform = `rotateY(${rotation}deg) skewY(${skew}deg)`;
+          });
+        </script> -->
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            let loaded = false;
+            const lazyLoadDemo = () => {
+              if (loaded) return; // Prevent multiple loads
+              loaded = true;
+              const iframe = document.querySelector('#HAdemo[data-src]');
+              if (iframe) {
+                iframe.src = iframe.getAttribute('data-src');
+                iframe.removeAttribute('data-src');
+              }
+            };
+
+            // Load iframe on user interaction
+            document.addEventListener('scroll', lazyLoadDemo, { passive: true, once: true });
+            document.addEventListener('click', lazyLoadDemo, { passive: true, once: true });
+            document.addEventListener('mousemove', lazyLoadDemo, { passive: true, once: true });
+            document.addEventListener('touchstart', lazyLoadDemo, { passive: true, once: true });
+            document.addEventListener('touchmove', lazyLoadDemo, { passive: true, once: true });
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+      <div class="grid-wrapper">
+        <div class="grid grid-center">
+
+           
+
+          
+          <div class="grid__item one-whole">
+          
+
+            
+              <article class="page">
+  
+  <div class="frontpage">
+  <div class="grid">
+
+    <!-- News section -->
+    <!--  Left column begins -->
+<div class="grid__item one-third lap-one-half palm-one-whole">
+
+    <!-- SOTOH 2026 - To move on/after event -->
+    <a href="/blog/2026/01/20/state-of-the-open-home-2026/" class="material-card picture-promo" style="
+          background-image: url(/images/frontpage/sotoh-2026.webp);
+          background-size: cover;
+          padding-top: 55%;
+          aspect-ratio: 16/10;
+        " aria-label="Join us in Utrecht on April 8 for State of the Open Home 2026.">
+    </a>
+
+  
+  
+
+  
+
+  
+  
+  <!-- Home Assistant updates posts -->
+  <div class="recent-posts material-card text">
+    <h1><iconify-icon inline="" icon="mdi:new-box" title="New box"></iconify-icon> Release Notes</h1>
+
+    <ol>
+      
+
+      
+      
+      
+      
+      
+      
+      
+
+      
+
+      
+      
+      
+      <li class="post" style="display: grid; font-size: 16px">
+        <a href="/blog/2026/01/07/release-20261/">2026.1: Home is where the dashboard is 🥂</a>
+        <small class="blog-date">January 7, 2026</small>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      
+
+      
+
+      
+      
+      
+      <li class="post" style="display: grid; font-size: 16px">
+        <a href="/blog/2025/12/03/release-202512/">2025.12: Triggering the holidays 🎄</a>
+        <small class="blog-date">December 3, 2025</small>
+      </li>
+      
+      
+      
+      
+      
+      
+
+      
+      
+    </ol>
+  </div>
+
+  <!-- Recent blog posts -->
+  <div class="recent-posts material-card text">
+    <h1><iconify-icon inline="" icon="mdi:newspaper-variant-multiple" title="Newspaper variant multiple"></iconify-icon> Recent Blog Posts</h1>
+
+    <ol>
+      
+
+      
+      
+      
+
+      
+
+      
+      
+      
+      <li class="post" style="display: grid; font-size: 16px">
+        <a href="/blog/2026/01/20/state-of-the-open-home-2026/">State of the Open Home 2026: join us live in Utrecht, the Netherlands!</a>
+        <small class="blog-date">January 20, 2026</small>
+      </li>
+      
+      
+      
+      
+
+      
+
+      
+      
+      
+      <li class="post" style="display: grid; font-size: 16px">
+        <a href="/blog/2026/01/13/partner-update-heltun/">Partner update: HELTUN removed from Works with Home Assistant</a>
+        <small class="blog-date">January 13, 2026</small>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+
+      
+
+      
+      
+      
+      <li class="post" style="display: grid; font-size: 16px">
+        <a href="/blog/2025/12/17/music-assistant-2-7/">Music Assistant 2.7 - Taking over the airwaves</a>
+        <small class="blog-date">December 17, 2025</small>
+      </li>
+      
+      
+      
+      
+
+      
+
+      
+      
+      
+      <li class="post" style="display: grid; font-size: 16px">
+        <a href="/blog/2025/12/09/wwha-2025-recap/">More devices, more choice: celebrating a massive year for certification</a>
+        <small class="blog-date">December 9, 2025</small>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+
+      
+      
+    </ol>
+  </div>
+
+  <!-- Community -->
+  <a href="/community" class="material-card picture-promo" style="
+        background-image: url(/images/frontpage/community-card.webp);
+        aspect-ratio: 500/263;
+      " aria-label="Join the Home Assistant community">
+  </a>
+
+  <!-- OHF notice -->
+  <a href="https://www.openhomefoundation.org/blog/announcing-the-open-home-foundation/" class="material-card highlight-blog-post">
+    <div>
+      <p class="lead">We are a non-profit and can't be sold or acquired.</p>
+      <p>Home Assistant is a project by the Open Home Foundation.</p>
+    </div>
+    <iconify-icon icon="mdi:chevron-right"></iconify-icon>
+  </a>
+
+  <a class="material-card highlight-blog-post" href="/blog/2016/01/19/perfect-home-automation/">
+    <p class="lead">Read our founder's vision for the perfect home automation</p>
+    <iconify-icon icon="mdi:chevron-right"></iconify-icon>
+  </a>
+
+  <div class="join-community material-card text">
+    <h1><iconify-icon inline="" icon="simple-icons:amazonalexa" title="Amazonalexa"></iconify-icon> Alexa, turn on the lights</h1>
+
+    Use Alexa to control Home Assistant.
+
+    <div class="links">
+      <a href="/cloud/">Learn more</a>
+    </div>
+  </div>
+
+  <div class="join-community material-card text">
+    <h1><iconify-icon inline="" icon="simple-icons:googleassistant" title="Googleassistant"></iconify-icon> Ok Google, turn off the AC</h1>
+
+    Use Google Assistant to control Home Assistant.
+
+    <div class="links">
+      <a href="/cloud/">Learn more</a>
+    </div>
+  </div>
+
+  <div class="join-community material-card text">
+    <h1><iconify-icon inline="" icon="mdi:people-group-outline" title="People group outline"></iconify-icon> Join The Community</h1>
+
+    Our vibrant community is very active and super friendly. We love to talk and share our passion for home automation.
+
+    <div class="links">
+      <a href="https://community.home-assistant.io"><iconify-icon inline="" icon="simple-icons:discourse" title="Discourse"></iconify-icon> Forums</a>
+      <a href="/join-chat/"><iconify-icon inline="" icon="simple-icons:discord" title="Discord"></iconify-icon> Chat</a>
+      <a href="/newsletter/"><iconify-icon inline="" icon="mdi:email-newsletter" title="Email newsletter"></iconify-icon> Newsletter</a>
+    </div>
+  </div>
+
+</div>
+<!-- Left column ends -->
+
+
+<!-- Center content begins -->
+<div class="grid__item one-third lap-one-half palm-one-whole">
+
+  <!-- All landing pages have a block. -->
+    
+  <a class="material-card picture-promo " href="/connect/zbt-2/" style="
+          background-image: url(/images/frontpage/zbt-2-frontpage.webp);
+          background-size: cover;
+          background-color: #41bdf5;
+        ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Home Assistant Connect ZBT-2
+        </div>
+        <div class="subtitle">The easiest way to start with Zigbee or Thread is now even better.</div>
+      </div>
+    </div>
+  </a>
+    
+  <a class="material-card picture-promo picture-top" href="/connect/zwa-2/" style="
+          background-image: url(/images/frontpage/zwa-2-frontpage.webp);
+          background-size: cover;
+          background-color: #41bdf5;
+        ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Home Assistant Connect ZWA-2
+        </div>
+        <div class="subtitle">The ultimate way to connect Z-Wave devices to Home Assistant.</div>
+      </div>
+    </div>
+  </a>
+    
+  <a class="material-card picture-promo " href="/voice-pe/" style="
+          background-image: url(/images/frontpage/voice-pe-frontpage.jpg);
+          background-size: cover;
+          background-color: #41bdf5;
+        ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Home Assistant Voice Preview Edition
+        </div>
+        <div class="subtitle">Bring choice to voice - the best way to get started with voice</div>
+      </div>
+    </div>
+  </a>
+    
+  <a class="material-card picture-promo " href="/green/" style="
+          background-image: url(/images/frontpage/green-frontpage.jpg);
+          background-size: cover;
+          background-color: #41bdf5;
+        ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Home Assistant Green
+        </div>
+        <div class="subtitle">The easy-to-use, versatile, and trustworthy smart home hub for everyone.</div>
+      </div>
+    </div>
+  </a>
+      
+  <a class="material-card picture-promo " href="/yellow/" style="
+          background-image: url(/images/frontpage/yellow-frontpage.jpg);
+          background-size: cover;
+          background-color: #41bdf5;
+        ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Home Assistant Yellow
+        </div>
+        <div class="subtitle">Home Assistant Yellow is your Matter-ready, upgradeable, and extendable smart home hub. You won't need anything else.</div>
+      </div>
+    </div>
+  </a>
+    
+  <a class="material-card picture-promo " href="/connectzbt1/" style="
+          background-image: url(/images/frontpage/feature-zbt1.jpg);
+          background-size: cover;
+          background-color: #41bdf5;
+        ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Home Assistant Connect ZBT-1
+        </div>
+        <div class="subtitle">Best way to add Zigbee and Thread to Home Assistant</div>
+      </div>
+    </div>
+  </a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+
+</div>
+<!-- Center sidebar ends -->
+
+
+<!-- Right content begins -->
+<div class="grid__item one-third lap-one-half palm-one-whole">
+
+  <!-- State of the Open Home -->
+  <a href="/blog/2025/04/16/state-of-the-open-home-recap/" class="material-card picture-promo" style="
+      background-image: url(/images/frontpage/feature-sotoh2025.jpg);
+      background-size: cover;
+      padding-top: 55%;
+    ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          State of the Open Home 2025
+        </div>
+        <div class="subtitle">
+          Learn about our progress so far and also the roadmap for this year.
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Assist -->
+  <a class="material-card picture-promo picture-top" href="/voice_control/" style="
+      background-image: url(/images/frontpage/feature-voice.jpg);
+      background-size: cover;
+      padding-bottom: 35%;
+    ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Control your home with Assist
+        </div>
+        <div class="subtitle">
+          Our private, insanely fast, voice assistant running on affordable
+          hardware. Now supporting wake words.
+        </div>
+      </div>
+    </div>
+  </a>
+  <a class="material-card picture-promo" href="/home-energy-management/" style="
+      background-image: url(/images/frontpage/energy-frontpage.jpg);
+      background-size: cover;
+      padding-top: 35%;
+    ">
+    <div class="caption">
+      <div>
+        <div class="title">
+          Home Energy Management
+        </div>
+        <div class="subtitle">
+          Monitor your energy usage, transition to sustainable energy and save money
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let loaded = false;
+    const lazyLoadYouTube = () => {
+      if (loaded) return; // Prevent multiple loads
+      loaded = true;
+      const iframes = document.querySelectorAll('.livestream-card iframe[data-src]');
+      iframes.forEach(iframe => {
+        iframe.src = iframe.getAttribute('data-src');
+        iframe.removeAttribute('data-src');
+        setTimeout(() => {
+          iframe.parentElement.style.opacity = 1;
+        }, 500);
+      });
+    };
+
+    document.addEventListener('scroll', lazyLoadYouTube, { once: true });
+    document.addEventListener('click', lazyLoadYouTube, { once: true });
+    document.addEventListener('mousemove', lazyLoadYouTube, { once: true });
+    document.addEventListener('touchstart', lazyLoadYouTube, { once: true });
+    document.addEventListener('touchmove', lazyLoadYouTube, { once: true });
+  });
+</script>
+<!-- Right content ends -->
+
+    <!-- Features section -->
+    <section class="grid features">
+  <div class="grid__item one-whole">
+    <h2 class="sub-title">Features</h2>
+
+    <div class="feature-cards">
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:lightbulb-variant-outline" title="Lightbulb variant outline"></iconify-icon>
+          Works with over 1000 brands
+        </div>
+        <div class="card-content">
+          <p>
+            Home Assistant integrates with over a thousand different devices
+            and services.
+          </p>
+
+          <p>
+            Once started, Home Assistant will automatically scan your network for
+            known devices and allow you to easily set them up.
+          </p>
+          <a class="button" href="/integrations">EXPLORE INTEGRATIONS</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:robot-happy-outline" title="Robot happy outline"></iconify-icon>
+          Powerful automations
+        </div>
+        <div class="card-content">
+          <p>
+            Once you have integrated all your devices at home, you can unleash Home
+            Assistant’s advanced automation engine to make your home work for you.
+          </p>
+
+          <ul>
+            <li>Turn on the light when the sun sets or when coming home</li>
+            <li>Alert you when you leave your garage door open.</li>
+          </ul>
+          <a class="button" href="/docs/automation">EXPLORE AUTOMATIONS</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:view-dashboard" title="View dashboard"></iconify-icon>
+          Versatile dashboards
+        </div>
+        <div class="card-content">
+          <p>
+            Home Assistant dashboards allow you to display information about your smart home. Dashboards are customizable and provide a powerful way to manage your home from your mobile or desktop.
+          </p>
+
+          <ul>
+            <li>Easily create and customize your dashboards with drag-and-drop.</li>
+            <li>Different card types to visualize your data and control your smart home devices.</li>
+          </ul>
+          <a class="button" href="/dashboards">EXPLORE DASHBOARDS</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:microphone" title="Microphone"></iconify-icon>
+          Assist, our voice assistant
+        </div>
+        <div class="card-content">
+          <p>
+            Assist allows you to control Home Assistant using natural language. It is built on top of an open voice foundation and powered by knowledge provided by our community.
+          </p>
+
+          <ul>
+            <li>Customize your voice assistant and experiment with AI conversations.</li>
+            <li>Use Assist everywhere on your mobile phone, tablets, smartwatches, and even old-school telephones.</li>
+          </ul>
+          <a class="button" href="/voice_control/">EXPLORE ASSIST</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:puzzle" title="Puzzle"></iconify-icon>
+          Extend your system with add-ons
+        </div>
+        <div class="card-content">
+          <p>
+            Home Assistant is not just limited to Home Assistant. Easily install
+            other applications that will help you manage your home.
+          </p>
+
+          <ul>
+            <li>Run AdGuard, a DNS-based ad blocker</li>
+            <li>Run third party automation engines like NodeRed</li>
+            <li>Turn Home Assistant into a Spotify Connect target</li>
+          </ul>
+          <a class="button" href="/addons">EXPLORE ADD-ONS</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:shield-home-outline" title="Shield home outline"></iconify-icon>
+          All your smart home data stays local
+        </div>
+        <div class="card-content">
+          <p>Home Assistant keeps your data local, no need for a cloud.</p>
+
+          <p>
+            Home Assistant communicates with your devices locally, and will fallback
+            to pulling in data from the cloud if there is no other option. No data
+            is stored in the cloud, and everything is processed locally.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:cellphone" title="Cellphone"></iconify-icon>
+          Companion Mobile Apps
+        </div>
+        <div class="card-content">
+          <p>
+            Use the official Home Assistant apps, a convenient companion to quickly
+            control your devices and be notified when things happen in your home,
+            even on your wrist using the Apple Watch.
+          </p>
+
+          <p>
+            The apps can also be used to send your location home to use presence
+            detection as part of your automations. Data is sent directly to your
+            home, no access by third-parties.
+          </p>
+          <a class="button" href="https://companion.home-assistant.io/" target="_blank">
+            DOWNLOAD APPS
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:solar-power-variant" title="Solar power variant"></iconify-icon>
+          Home Energy Management
+        </div>
+        <div class="card-content">
+          <p>
+            Home Assistant allows you to get on top of your energy use with its
+            home energy management feature. Gain new insights,
+            optimize your solar panel production, plan energy usage and save money.
+          </p>
+
+          <a class="button" href="/home-energy-management/" aria-label="Learn more about Home Energy Management">
+            LEARN MORE
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:cast-connected" title="Cast connected"></iconify-icon>
+          Home Assistant Cast
+        </div>
+        <div class="card-content">
+          <p>
+            Take over all the screens. Home Assistant Cast makes every TV a display for dashboards.
+          </p>
+
+          <a class="button" href="/blog/2019/08/06/home-assistant-cast/" aria-label="Learn more about Home Assistant Cast">
+            LEARN MORE
+          </a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <iconify-icon inline="" icon="mdi:nfc-variant" title="Nfc variant"></iconify-icon>
+          NFC Tags
+        </div>
+        <div class="card-content">
+          <p>
+            Use NFC to bring music to your life or automate the mundane.
+          </p>
+
+          <a class="button" href="/blog/2020/09/15/home-assistant-tags/" aria-label="Learn more about Home Assistant Tags">
+            LEARN MORE
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Press section -->
+    <section class="grid sponsors-and-press">
+  <div class="grid__item one-whole">
+    <h2 class="sub-title">In the press</h2>
+    <p class="lead">Trusted by home automation experts and more than a million households.</p>
+  </div>
+
+  <div class="seen-press grid__item one-whole">
+    <a href="https://www.theverge.com/2021/9/16/22678088/home-assistant-amber-smart-home-hub-specs-release-date-price" target="_blank" rel="noopener"><div class="material-card"><img alt="The Verge logo" src="/images/press/theverge.svg"></div></a>
+
+    <a href="https://arstechnica.com/information-technology/2021/03/how-to-achieve-smart-home-nirvana-or-home-automation-without-subscription/" target="_blank" rel="noopener"><div class="material-card"><img alt="ArsTechnica.com logo" src="/images/press/arstechnica.svg"></div></a>
+
+    <a href="https://tweakers.net/reviews/8704/paulus-schoutsen-home-assistant-concurreert-met-alles-wat-via-de-cloud-gaat.html" target="_blank" rel="noopener"><div class="material-card"><img alt="Tweakers.net logo" src="/images/press/tweakers.png"></div></a>
+
+    <a href="https://www.youtube.com/watch?v=x7pSkVarixU" target="_blank" rel="noopener"><div class="material-card"><img alt="Linus Tech Tips logo" class="square" src="/images/press/ltt.svg"></div></a>
+
+    <a href="https://www.troyhunt.com/iot-unravelled-part-1-its-a-mess-but-then-theres-home-assistant/" target="_blank" rel="noopener"><div class="material-card"><img class="square round" alt="Troy Hunt logo" src="/images/press/troyhunt.jpg"></div></a>
+
+    <a href="https://www.tomshardware.com/news/raspberry-pi-home-assistant-amber" target="_blank" rel="noopener"><div class="material-card"><img alt="Tom's Hardware logo" src="/images/press/tomshardware.svg"></div></a>
+
+    <a href="https://www.producthunt.com/posts/home-assistant" target="_blank" rel="noopener"><div class="material-card"><img alt="ProductHunt.com logo" src="/images/press/producthunt.com.png"></div></a>
+
+    <a href="https://www.linux.com/news/home-assistant-python-approach-home-automation-video" target="_blank" rel="noopener"><div class="material-card"><img alt="Linux.com logo" src="/images/press/linux.com.png"></div></a>
+
+    <a href="https://opensource.com/article/17/7/home-automation-primer" target="_blank" rel="noopener"><div class="material-card"><img alt="OpenSource.com logo" src="/images/press/opensource.com.svg"></div></a>
+
+    <a href="http://www.linux-magazine.com/Issues/2017/203/Home-Assistant" target="_blank" rel="noopener"><div class="material-card"><img alt="Linux Magazine logo" src="/images/press/LinuxMagazine.png"></div></a>
+
+    <a href="https://www.heise.de/select/ct/2017/26/1513910625909214" target="_blank" rel="noopener"><div class="material-card"><img alt="Ct logo" src="/images/press/ct.png"></div></a>
+  </div>
+</section>
+
+    <!-- Sponsor section -->
+    <section class="sponsor">
+      <div class="sponsored-by grid__item one-whole">
+        <h2>The Home Assistant project is sponsored by</h2>
+        <div class="material-card text">
+          <a href="https://www.nabucasa.com"><img alt="Nabu Casa logo" src="/images/sponsors/nabu_casa.svg"></a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+
+  
+
+
+  
+
+</article>
+
+            
+          </div>
+
+
+          
+        </div>
+      </div>
+
+      <footer>
+        <div class="grid-wrapper">
+  <div class="grid">
+    <div class="grid__item">
+      <div class="skyline grid">
+        <div class="skyline grid__item one-whole">
+          <div class="footer-skyline">
+          </div>
+        </div>
+      </div>
+      <div class="footer-nav grid">
+        <div class="company grid__item one-quarter lap-one-half palm-one-whole">
+          <div class="title">
+            <img src="/images/footer-logo-text.svg" height="72" alt="Home Assistant">
+          </div>
+          <p>
+            Home Assistant is a project from the <a href="https://www.openhomefoundation.org/">Open Home Foundation</a>, sponsored by <a href="https://www.nabucasa.com/">Nabu Casa</a>.
+          </p>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Join us and contribute!</h3>
+          <ul>
+            <li><a class="external-link" href="https://github.com/home-assistant/">GitHub repo <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></li>
+            <li><a class="external-link" href="https://developers.home-assistant.io">Developers Portal <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></li>
+            <li><a class="external-link" href="https://design.home-assistant.io">Design Portal <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></li>
+            <li><a class="external-link" href="https://data.home-assistant.io">Data Science Portal <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></li>
+            <li><a class="external-link" href="https://community.home-assistant.io">Community Forum <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></li>
+            <li><a class="external-link" href="https://creators.home-assistant.io/">Creator Network <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></li>
+            <li><a class="external-link" href="https://works-with.home-assistant.io/">Works With Home Assistant <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></li>
+            <li><a href="/community">Our community</a></li>
+            <li><a href="/help/reporting_issues/">Reporting issues</a></li>
+          </ul>
+          <h3>System status</h3>
+          <ul>
+            <li>
+              <a class="external-link" href="https://alerts.home-assistant.io">Integration Alerts <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a>
+            </li>
+            <li><a href="/security/">Security Alerts</a></li>
+            <li>
+              <a class="external-link" href="https://status.home-assistant.io">System Status <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid__item one-quarter lap-one-half palm-one-whole">
+          <h3>Companion apps</h3>
+          <ul>
+            <li><a class="external-link" href="https://apps.apple.com/app/id1099568401">iOS and Apple devices</a></li>
+            <li><a class="external-link" href="https://play.google.com/store/apps/details?id=io.homeassistant.companion.android">Android and Wear OS</a></li>
+            <li><a class="external-link" href="https://companion.home-assistant.io/">...and more!</a></li>
+          </ul>
+          <h3>Governance</h3>
+          <ul>
+            <li><a href="/privacy/">Privacy Notices</a></li>
+            <li><a href="/developers/cla/">Contributor License Agreement</a></li>
+            <li><a href="/tos/">Terms of Service</a></li>
+            <li><a href="/code_of_conduct/">Code of Conduct</a></li>
+            <li><a href="/developers/credits/">Credits</a></li>
+            <li><a href="/developers/license/">License</a></li>
+          </ul>
+        </div>
+
+        <div class="socials grid__item one-quarter lap-one-half palm-one-whole">
+
+          <h3>Follow us</h3>
+          <p><a class="external-link" href="https://newsletter.openhomefoundation.org/#/portal">Sign up for our newsletter <iconify-icon inline="" icon="tabler:external-link" title="External link"></iconify-icon></a></p>
+          <div class="icons">
+            <a rel="me" href="https://youtube.com/@home_assistant" title="YouTube" target="_blank"><iconify-icon icon="simple-icons:youtube"></iconify-icon></a>
+            <a rel="me" href="https://reddit.com/r/homeassistant" title="Reddit" target="_blank"><iconify-icon icon="simple-icons:reddit"></iconify-icon></a>
+            <a rel="me" href="https://github.com/home-assistant" title="GitHub" target="_blank"><iconify-icon icon="simple-icons:github"></iconify-icon></a>
+            <br>
+            <a rel="me" href="https://fosstodon.org/@homeassistant" title="Mastodon" target="_blank"><iconify-icon icon="simple-icons:mastodon"></iconify-icon></a>
+            <a rel="me" href="https://bsky.app/profile/home-assistant.io" title="Bluesky" target="_blank"><iconify-icon icon="simple-icons:bluesky"></iconify-icon></a>
+            <a rel="me" href="https://x.com/home_assistant" title="X" target="_blank"><iconify-icon icon="simple-icons:x"></iconify-icon></a>
+            <br>
+            <a rel="me" href="https://www.facebook.com/homeassistantio" title="Facebook" target="_blank"><iconify-icon icon="simple-icons:facebook"></iconify-icon></a>
+            <a rel="me" href="https://www.instagram.com/homeassistant/" title="Instagram" target="_blank"><iconify-icon icon="simple-icons:instagram"></iconify-icon></a>
+            <a rel="me" href="https://www.linkedin.com/company/home-assistant" title="LinkedIn" target="_blank"><iconify-icon icon="simple-icons:linkedin"></iconify-icon></a>
+          </div>
+
+          <div class="web-notice">
+            <p>
+              For partnership inquiries please check out <a href="https://works-with.home-assistant.io/">Works With Home Assistant</a>. For media, get in touch <a href="mailto:media@openhomefoundation.org">here</a>. For other questions, you can contact us <a href="mailto:hello@home-assistant.io">here</a> (No technical support!)
+            </p>
+            <p>
+              Website powered by <a href="https://jekyllrb.com/">Jekyll</a><br>
+              Originally based on the <a href="https://github.com/coogie/oscailte">Oscailte theme</a>
+            </p>
+            <a href="https://www.netlify.com">
+              <img src="/images/frontpage/netlify.svg" alt="Deploys by Netlify Badge">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+
+    </div>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.3.1/lite-youtube.js" integrity="sha384-7o3d1sg8jSS1LMKzzIEucWtWFI1X4lFCC5gu2ylAgH3KmHcJgjTqp6LWfIvbbmf9" crossorigin="anonymous"></script>
+
+<script src="/javascripts/terminology_tooltip.js?274cec0734bc752f0e5ea3d4e2e59858" type="text/javascript" defer=""></script>
+
+<script src="/javascripts/prism.js?5d6619066a1fc5cd819a93c132b539ac" type="text/javascript" defer=""></script>
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3/dist/umd/index.min.js" integrity="sha384-f/IEhh8fvOc2ALU79emLlUqAYXyqlA/zYhM+g5GlWMk15QBjTXy05TtmfT1TbtV6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'FBHBYS3J0U',
+    indexName: 'home-assistant',
+    apiKey: "ba6f7e6d97b3d3d2f778978c742a47c6",
+  });
+  document.querySelector('.site-title').addEventListener('contextmenu', function (ev) {
+    ev.preventDefault();
+    document.location.assign("https://design.home-assistant.io/#brand/logo")
+  });
+</script>
+
+
+
+<script type="text/javascript">
+  {
+    const changeNavColor = () => {
+      const scrollPosition = document.documentElement.scrollTop;
+      const nav = document.querySelector("header");
+      if (scrollPosition <= 1) {
+        nav.classList.add("dark");
+      } else {
+        nav.classList.remove("dark");
+      }
+    }
+  
+    window.addEventListener("load", () => changeNavColor());
+    window.addEventListener("scroll", () => changeNavColor(), { passive: true });
+  }
+</script>
+
+
+<script type="text/javascript">
+  {
+    const article = document.querySelector("article.post");
+    if (article) {
+      const iframes = article.querySelectorAll("iframe[data-src]");
+      let loaded = false;
+      if (iframes) {
+        document.addEventListener('mousemove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('touchmove', loadLazyFrames, { passive: true, once: true });
+        document.addEventListener('scroll', loadLazyFrames, { passive: true, once: true });
+  
+        function loadLazyFrames() {
+          if (loaded) return;
+          loaded = true;
+  
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute("data-src");
+            if (src) {
+              iframe.setAttribute("src", src);
+              iframe.removeAttribute("data-src");
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
+  <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;5cecb750997f42328a45cbfc192e0673&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+

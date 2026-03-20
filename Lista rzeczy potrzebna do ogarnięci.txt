@@ -1,0 +1,18 @@
+Lista rzeczy potrzebna do ogarnięcia setupu:
+1. Serwer 
+- w postaci raspberry pi najprostrzy i jednocześnie chyba najlepsze rozwiazanie. 
+ w postaci hostów (komputerów stacjonarnych) pod możliwą większą rozbudowę w przyszłości. 
+2. Akcesoria na miejsce 
+- Myszka
+- Klawiatura
+- Monitor z zasilaczem.
+- Karta pamięci na system
+- Pendrive z czytnikiem kart pamięci.
+3. Sprzęt do działania
+- Teorytycznie najlepiej 2 laptopy 
+- Jeden do konfiguracji home assistanta
+- Drugi do planu Analizy, schematów i notatek.
+4. Dodatkowe rzeczy
+- Kable internetowe w razie czego
+- Kable obrazowe jeśli nie ma na miejscu, albo nie wiadomo.
+- Listwa zasilająca

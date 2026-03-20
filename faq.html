@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasSmartH | Twój Inteligentny Dom</title>
+    <title>FAQ | MasSmartH</title>
     <meta name="description"
         content="Profesjonalne systemy Smart Home oparte o Home Assistant. Pełna kontrola, bezpieczeństwo i prywatność. Bez chmur i abonamentów.">
     <meta property="og:title" content="MasSmartH | Twój Inteligentny Dom">
@@ -37,10 +37,10 @@
                 <a href="index.html" class="logo"><i class="fa-solid fa-house-signal" style="color: var(--primary);"
                         aria-hidden="true"></i>Mas<span>SmartH</span></a>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Strona główna</a></li>
+                    <li><a href="index.html">Strona główna</a></li>
                     <li><a href="oferta.html">Oferta</a></li>
                     <li><a href="demo.html">Demo</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="faq.html" class="active">FAQ</a></li>
                     <li><a href="kontakt.html">Kontakt</a></li>
                     <!-- Przycisk Dark Mode -->
                     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Przełącz motyw"
@@ -54,107 +54,85 @@
             </nav>
         </div>
     </header>
-
     <main style="flex-grow: 1;">
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content reveal">
-                    <h1>Twój dom, tylko <br><span class="hero-typing"></span></h1>
-                    <p>Profesjonalne systemy Smart Home oparte o Home Assistant. Pełna kontrola, bezpieczeństwo i
-                        prywatność. Bez chmur i abonamentów.</p>
-                    <div class="hero-actions">
-                        <a href="oferta.html" class="btn">Sprawdź Ofertę</a>
-                        <a href="demo.html" class="btn btn-outline">Zobacz Demo</a>
-                    </div>
+        <section class="faq-hero">
+            <div class="container reveal">
+                <p
+                    style="color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 10px;">
+                    <i class="fa-solid fa-circle-question"></i> Centrum Pomocy
+                </p>
+                <h1>Często zadawane<br>pytania</h1>
+                <p class="lead">Znajdź odpowiedzi na najczęstsze wątpliwości dotyczące instalacji i dbania o stabilny
+                    Smart Home.</p>
+
+                <div class="faq-search">
+                    <input type="text" placeholder="Wpisz słowo kluczowe..." autocomplete="off">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
         </section>
 
-        <div class="container">
-            <div class="stats-section reveal">
-                <div class="container stats-grid">
-                    <div class="stat-item">
-                        <h3 data-target="150">0</h3>
-                        <p>Projektów</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 data-target="30">0</h3>
-                        <p>% Oszczędności</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 data-target="100">0</h3>
-                        <p>% Prywatności</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 data-target="24">0</h3>
-                        <p>h Wsparcia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <section class="faq-content">
+            <div class="container faq-container reveal">
 
-        <section class="about">
-            <div class="container">
-                <div class="section-title reveal">
-                    <p>O marce</p>
-                    <h2>Dlaczego MasSmartH?</h2>
+                <!-- Accordion -->
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Czy to działa bez internetu? <i
+                            class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer">
+                        <p>Tak! W przeciwieństwie do chińskich rozwiązań z chmurą, cały system Home Assistant i Twoje
+                            dane przetwarzane są całkowicie lokalnie w Twoim domu. Internet potrzebny jest wyłącznie do
+                            zdalnego dostępu z telefonu z drugiego końca świata (gdy np. jesteś na wakacjach) oraz do
+                            wczytywania prognozy pogody czy asystenta głosowego.</p>
+                    </div>
                 </div>
-                <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <p style="font-size: 1.1rem; margin: 0 auto 20px;">
-                        Tworzę systemy, które działają dla Ciebie, a nie dla korporacji. Stawiam na rozwiązania
-                        <strong>Open Source</strong> (Home Assistant), które gwarantują, że Twoje dane zostają w domu.
-                    </p>
-                    <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600; margin: 0 auto;">
-                        Brak internetu? Żaden problem. Mój system działa w pełni lokalnie.
-                    </p>
-                </div>
-            </div>
-        </section>
 
-        <section id="realizacje" class="portfolio">
-            <div class="container">
-                <div class="section-title reveal">
-                    <p>Korzyści</p>
-                    <h2>Co zyskujesz?</h2>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Co jeśli padnie prąd lub zawiesi się router? <i
+                            class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer">
+                        <p>Brak prądu odcina zasilanie do systemu, to logiczne. Jednak sam router z postawionym
+                            środowiskiem konfiguracyjnym włącza się ponownie do gry bez Twojej interwencji w ciągu 1-2
+                            minut od powrotu zasilania sieciowego. System zaciąga "ostatnie zapamiętane rolety" i uczy
+                            się na nowo, działając od razu. W obiektach premium zawsze dokładamy mały, wyciszony
+                            zasilacz EPS/UPS do rozdzielni – wtedy system alarmowy zawiadamia Cię o braku zasilania
+                            jeszcze zanim sam spadnie.</p>
+                    </div>
                 </div>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);"><i
-                                class="fa-solid fa-couch" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Komfort</span>
-                            <h4>Sceny Świetlne</h4>
-                            <p>Jeden klik i salon zmienia się w kino. Rolety w dół, światła przygasają.</p>
-                        </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Czy mogę rozbudować system w przyszłości? Może na
+                        wiosnę ogród? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer">
+                        <p>Oczywiście, wręcz to zalecam! Modułowość to esencja rozwiązań otwartych. Jeśli dziś budżet
+                            puszcza na spięcie rolet i świateł – super, to trzon automatyki. Za 3 miesiące domawiasz
+                            kilka przekaźników Zigbee i dokładamy kontrolę rekuperacji. A wiosną wpinamy inteligentny
+                            komputer do elektrozaworów w ogrodzie i podpinamy stację pogodową, aby nie lał wody podczas
+                            ulewy na zewnątrz.</p>
                     </div>
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #10b981, #34d399);"><i
-                                class="fa-solid fa-piggy-bank" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Pieniądze</span>
-                            <h4>Oszczędność</h4>
-                            <p>Inteligentne ogrzewanie to nawet 30% niższe rachunki w skali roku.</p>
-                        </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">Boję się, że aplikacja będzie dla mnie za trudna.
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+                    <div class="faq-answer">
+                        <p>Rozumiem to, Home Assistant potrafi przytłoczyć panelami. Ale Twoje ekrany dla telefonu i
+                            tabletu są rysowane przeze mnie **od zera**. Przycisk włączania żarówek jest równie
+                            trywialny jak użycie kalkulatora. Cała "skomplikowana i brzydka" maszyneria logiczna jest
+                            schowana na zapleczu administracyjnym z którego nie musisz korzystać po instalacji
+                            (zablokujemy to by dzieci nie wyklikały ustawień). Resztą się po prostu cieszysz.</p>
                     </div>
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);"><i
-                                class="fa-solid fa-house-flood-water" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Bezpieczeństwo</span>
-                            <h4>Anty-Zalanie</h4>
-                            <p>System automatycznie odcina wodę, gdy wykryje wyciek pod pralką.</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item reveal">
-                        <div class="portfolio-img" style="background: linear-gradient(135deg, #8b5cf6, #d946ef);"><i
-                                class="fa-solid fa-location-dot" aria-hidden="true"></i></div>
-                        <div class="portfolio-info"><span>Wygoda</span>
-                            <h4>Brama GPS</h4>
-                            <p>Brama otwiera się sama, gdy podjeżdżasz autem pod dom. Magia.</p>
-                        </div>
-                    </div>
+                </div>
+
+                <div class="still-questions">
+                    <h3>Masz bardziej techniczne pytania?</h3>
+                    <p>Napisz do mnie, a z chęcią opowiem na żywo o schematach łączeniowych i głębokich integracjach.
+                    </p>
+                    <a href="kontakt.html" class="btn">Zadaj mi pytanie</a>
                 </div>
             </div>
         </section>
     </main>
-
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -206,15 +184,11 @@
             if (stats && winScroll > stats.offsetTop - window.innerHeight + 100 && !window.counted) {
                 document.querySelectorAll('.stat-item h3').forEach(c => {
                     const t = +c.getAttribute('data-target');
-                    const inc = Math.max(1, t / 40); // Szybszy krok
+                    const inc = t / 200;
                     const upd = () => {
                         const n = +c.innerText;
-                        if (n < t) {
-                            c.innerText = Math.ceil(n + inc);
-                            setTimeout(upd, 15); // Krótszy czas
-                        } else {
-                            c.innerText = t + "+";
-                        }
+                        if (n < t) { c.innerText = Math.ceil(n + inc); setTimeout(upd, 20); }
+                        else c.innerText = t + "+";
                     };
                     upd();
                 });
@@ -294,6 +268,23 @@
                 ans.style.maxHeight = item.classList.contains('active') ? ans.scrollHeight + "px" : null;
             }
         });
+
+        // Wyszukiwarka FAQ
+        const searchInput = document.querySelector('.faq-search input');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    const q = item.querySelector('.faq-question').innerText.toLowerCase();
+                    const a = item.querySelector('.faq-answer').innerText.toLowerCase();
+                    if (q.includes(term) || a.includes(term)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
     </script>
 
     
